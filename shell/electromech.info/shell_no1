@@ -1,0 +1,11 @@
+#!/bin/sh
+echo "Enter a directory :"
+read dir
+
+if [ -d $dir ]
+then
+ echo "Directory exist : below is Directory contents"
+ ls -lrt $dir
+else
+ echo "The directory $dir not exist or it is not directory"
+fi

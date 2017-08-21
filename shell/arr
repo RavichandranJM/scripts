@@ -1,0 +1,9 @@
+#!/usr/bin/awk -f 
+BEGIN{
+FS=" "
+}
+{arr[i++]=$2}
+END{
+for(i=0;i<=NR;i++)
+print arr[i]
+}

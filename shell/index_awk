@@ -1,0 +1,3 @@
+BEGIN{sentence="They live in Delhi."}
+{if(index(sentence, "Delhi") > 0) {printf( "Found in position %dn" ,index(sentence,"Delhi")); }}
+END{}

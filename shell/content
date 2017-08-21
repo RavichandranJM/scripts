@@ -1,0 +1,14 @@
+total 48
+drwxrwxr-x 2 ravi ravi 4096 2012-07-30 16:23 chemie.fu-berlin.de
+-rwxrwxr-x 1 ravi ravi  219 2012-07-30 16:23 employee
+-rwxrwxr-x 1 ravi ravi   81 2012-07-30 16:23 code_file
+-rwxrwxr-x 1 ravi ravi   98 2012-07-30 16:23 code
+-rwxrwxr-x 1 ravi ravi    4 2012-07-30 16:23 sa1
+-rwxrwxr-x 1 ravi ravi  141 2012-07-30 16:23 index_awk
+-rwxrwxr-x 1 ravi ravi    3 2012-07-30 16:23 sample
+-rwxrwxr-x 1 ravi ravi   80 2012-07-30 16:23 sam_awk
+-rwxrwxr-x 1 ravi ravi   33 2012-07-30 16:23 sa2
+-rwxrwxr-x 1 ravi ravi  183 2012-07-30 16:23 substr_awk
+drwxrwxr-x 2 ravi ravi 4096 2012-07-30 23:03 grymoire.com
+-rw-rw-r-- 1 ravi ravi  128 2012-08-05 18:48 associative_array
+-rw-rw-r-- 1 ravi ravi    0 2012-08-05 18:50 content

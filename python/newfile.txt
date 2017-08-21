@@ -1,0 +1,17 @@
+1 #!/usr/bin/python
+2 # Filename: while.py
+3 number = 23
+4 running = True
+5 while running:
+6     guess = int(raw_input('Enter an integer : '))
+7     if guess == number:
+8         print 'Congratulations, you guessed it.'
+9         running = False # this causes the while loop to stop
+10     elif guess < number:
+11         print 'No, it is a little higher than that.'
+12     else:
+13         print 'No, it is a little lower than that.'
+14     #else:
+15     #print 'The while loop is over.'
+16     # Do anything else you want to do here
+17 print 'Done'

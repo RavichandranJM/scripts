@@ -1,0 +1,27 @@
+
+http://bash.cyberciti.biz/guide/Chapter_1_Challenges
+
+Chapter 1
+What is the shell?
+Shell is interface between kernel and the user.
+
+my answers - one is wrong 12th
+Decide whether the following sentence is true or false:
+Linux is a collection of programs and utilities glued together by the bash shell.-true  
+Shell manages files and data.-False
+Shell manages networks, memory and other resources.-False
+Linux kernel runs programs and loads them into the memory.-True
+Bash shell is a poor user interface.-False
+Bourne Shell is also known as /bin/sh.-True
+Bash Shell is also known as /bin/bash or /usr/local/bin/bash.-True
+C Shell offers more C like syntax.-True
+A few commands are built into the shell.-True
+Linux file system organised as hierarchy.-True
+To refer to several files with similar names you need to use wildcards.-True
+Wildcards increase command typing time.-True (False)
+Command ls is used to list directories.-true
+rmdir command will only remove empty directories.-True
+Everything is file in Linux.-True
+rm -i filename command will prompts for confirmation.-true
+Linux can run many programs at the same time.-True
+The bash shell is just a program.-True

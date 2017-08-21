@@ -1,0 +1,11 @@
+#!/usr/bin/awk -f
+BEGIN{
+ print "start"
+}
+/o/ { print "find o in", $0  }
+END{
+ print "End"
+}
+ 
+
+

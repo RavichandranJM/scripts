@@ -1,0 +1,10 @@
+#!/bin/sh
+echo "Enter a directory :"
+read dir
+
+if [ -e $dir ]
+then
+ echo " Directory/file path exist " 
+else
+ echo "The directory or file  not exist"
+fi

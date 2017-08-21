@@ -1,0 +1,14 @@
+#/bin/sh
+echo " Enter yes/no : " 
+read inp
+if [ $inp == "yes" ]
+then
+ echo "You entered Yes"
+elseif [ $inp == "No" ]
+ echo "you entered No"
+else 
+ echo " You entered invaild Input"
+fi
+
+
+

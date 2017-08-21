@@ -1,0 +1,9 @@
+{	
+if ($1 == "#BEGIN") {
+ FS=",";
+} else if ($1 == "#END") { 
+FS=" ";	
+} else {
+print $2,$3	
+}
+} 

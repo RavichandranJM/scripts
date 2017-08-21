@@ -1,0 +1,10 @@
+#!/usr/bin/awk -f 
+BEGIN {
+ sentence="This is a short, meaningless sentence.";
+}
+{
+print sentence;
+if (index(sentence, ",") > 0) {
+printf("Found a comma in position \%d\n", index(sentence,","));
+}
+}

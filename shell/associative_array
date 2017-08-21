@@ -1,0 +1,16 @@
+#!/bin/awk -f
+BEGIN {
+username[""]=0;
+}
+{
+username[$6]+=$5;
+}
+END {
+for (i in username)
+{
+if (i != "") {
+print i,username[i]
+}
+}
+}
+
