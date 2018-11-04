@@ -1,0 +1,1998 @@
+reason for change: Whatever the project I was hired for, it did not sign off for POC. I moved to buffer and I started searching from there.
+consultancy: is any offer in your hand? notice period is 2 months, i can push it for one month.
+expected ctc: As per company standard, 20-30% negotiable
+
+AWS
+Linux admin
+python/bash
+jenkins - upstream/downstream jobs, continuous integration/continuous delivery
+chef/puppet - config management
+nagios - monitoring tool
+
+Certifications
+
+Again, dont go for one umbrella devops certification, go with tools based specific ones. There are a very few useful ones which are ,
+
+AWS Sysops/Devops Certifications AWS Certified SysOps Administrator - Associate   or AWS Certified DevOps Engineer - Professional
+Puppet Certification Puppet Certification Program
+
+2 Years experience in comverse prepaid/postpaid billing product support/monitoring
+
+And if some1 says how can you ask this much if your current is this much, just say because I am not a job hopper. I could have reached to even higher than you can offer if I wanted to as few of my friends did, but I never considered my package as a factor. But now I do
+
+Primarily, I worked as devops engineer in Artiman ACM systems LLP. Basically, company was doing algorithamic automated trading in NASDAQ, CME Exchanges
+Whatever operations manual tasks in the company i automated it using bash&python. Also, I worked in webUI Projects using python as back end, MySQL for DB and used some java script libraries.
+
+operations tasks like startup of trading process, send startup report, process files from share broker and upload it to prod server, shutdown trading processes &
+send the End of day trading report. Automated monitoring of prod servers if any issues send out the report. 
+Back-testing data infra automation -> download market data, parse candles, parse other technical indicator files & machine learning files which is used for strategies, update strategy trades and send out trading reports.
+Build & release automation - checkout, build, create dir structure, release tar file
+deply & config - Automated deploy platform in prod servers and configure for next day trading
+
+My company is doing algorithamic automated trading in stock market trading exchanges like NASDAQ, CME.
+At first, All algo's implemented in back-testing infra for research which is in python and it will be ported to Java/C++.
+My projects include automation of tasks in stock market trading operations and reporting, 
+automation of back-testing infra data generation using python/shell, 
+I worked in some of back-testing infra development tasks which is python.
+I developed some 5 web UI projects where python as back end, MySQL for DB and used some java script libraries.
+
+Initially, we were trading in NASDAQ Equity stock market Exchange where field Trading platform is implemented in Java and back-testing in python.
+Later, moved to CME Futures stock market trading where field trading platform is implemented C++ and back-testing in python.
+-> what are all the modules have you used?
+external library/modules:
+MySQLdb:
+    db = MySQLdb.connect(host = "localhost", user = "root", passwd = "40bips", db = "reportsdb");
+    cur = db.cursor();
+    cur.execute(QUERY);
+    results = cur.fetchall();
+    cur.close()
+    db.close()
+bs4:
+    import requests
+    from bs4 import BeautifulSoup as bs
+    url = "http://www.nytimes.com"
+    soup = bs(requests.get(url).text)
+    for item in soup.find_all(class_= "story-heading"):
+        if item.a:
+            print item.a.text.replace("\n", "").strip()
+        else:
+            print item.contents[0].strip()
+    # CME
+    try:
+        request = urllib2.Request(self.url, headers = hdr);
+        soup = bs(urllib2.urlopen(request).read())
+        table = soup.find('table', {"id":"quotesFuturesProductTable1"})
+        tbody = table.find('tbody')
+        rows = tbody.findAll('tr')
+    except:
+        rows = []
+    try:
+        if rows:
+            allExpiryVol = []
+            for row in rows:
+                cols = row.findAll('td')
+                allExpiryVol.append(locale.atoi(cols[8].string))
+                todayVol = max(allExpiryVol)
+                #histVol.append(todayVol)
+                self.today = locale.format("%d", todayVol, grouping = True)
+        else:
+            self.today = "Not Available"
+    except:
+        self.today = "Not Available"
+
+lxml:
+    from lxml import etree
+    tree = etree.parse(conf) # Parsing xml file
+    root = tree.getroot() # get root
+    modifyStgyConf(root) 
+    def modifyStgyConf(root):
+        count=0
+        for el in root.getiterator(): # ET.getiterator(tag=None) - If you omit the argument, you will get an iterator that generates every element in the tree, #in document order.
+        #If you want to visit only tags with a certain name, pass that name as the argument.
+            if "strategy" in el.tag:
+                count += 1
+                stgy_str = "strategy" + str(count)
+                el.tag = stgy_str     # Replace tag name at start and end
+        root.find(".//count").text = str(count) # Find an Element anywhere in the tree
+    tree.write(conf + "_upd", pretty_print=True) # write tree after changes
+mod_python:
+    from mod_python import util
+    form = util.FieldStorage(req, keep_blank_values=True);
+    retStgyList = form.get('slist', []);
+    # At first load display summary page of last traded day in BT
+    if "tab" not in form:
+        sel = 1;
+    else:
+        sel = int(form["tab"].value);
+    if "dname" not in form:
+        dname = datetime.date.today().strftime("%Y-%m-%d")
+    else:
+        dname = form["dname"].value;
+    # getJsonData.py
+    def index(req):
+        global dnameVal, stgyVal, verVal, symVal, start, end;
+        candlepath = "/itchfiles/parsed/candle_0.1"
+        dType = req.form.get("name", 0);
+        stgyVal = req.form.get("strategy", 0);
+        verVal = req.form.get("version", 0);    
+pytz:
+    # Get market time
+    def getMktTime(ad):
+        time= "CLOSED";
+        mktTime = ""
+        utc = pytz.timezone('UTC');
+        # Time conversion
+        eastern = pytz.timezone('US/Eastern');
+        if ad.mktTimeList:
+            mktTime = max(ad.mktTimeList)
+        # To handle if db does not have any record
+        if(str(mktTime) != ""):
+            datename = datetime.datetime.strptime(str(mktTime), "%Y%m%d%H%M%S");
+            dateUtc = utc.localize(datename);
+            dateMkt = dateUtc.astimezone(eastern);
+            time = dateMkt.strftime("%Y-%m-%d %H:%M:%S");
+        return time;
+pandas:
+    import pandas as pd
+    cread = pd.read_csv(curfile, names = ["date", "clusterid"])
+    
+standard library/modules:
+Queue:
+    q = Queue() # create a Queue object
+    q.put(line) # Write line into queue
+    line = q.get(timeout = self.timeout) # Remove and return an item from the queue. If optional args block is true and timeout is None (the default), block if #necessary until an item is available. If timeout is a positive number, it blocks at most timeout seconds and raises the Empty exception if no item was #available within that time. Otherwise (block is false), return an item if one is immediately available, else raise the Empty exception (timeout is ignored #in that case).
+getopt:
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "d:htz");
+    except getopt.GetoptError, err:
+        usage(str(err));
+    # Parse command line arguments
+    parseArgs(opts);
+    # Parse arguments
+    def parseArgs(opts):
+        global tradeday, dbday, rootdir;
+        for opt, arg in opts:
+            if (opt == "-d"):  # opt
+                tradeday = arg; # arg
+                dbday = "20"+tradeday[4:] + "-" + tradeday[0:2] + "-" + tradeday[2:4];
+            elif (opt == "-h"):
+                usage("");
+            elif (opt == "-z"):
+                rootdir = "/operations/CME/Scripts/";
+            elif (opt == "-t"):
+                rootdir = "/operations/CME/TestData/Scripts/";
+json:
+    return json.dumps({'time': timeList, 'ultosc': ultoscList}); # Serialize obj to a JSON formatted str using this conversion table
+    #Python: JSON
+    #dict:	object
+    #list, tuple:	array
+    #str, unicode:	string
+    #int, long, float:	number
+    #True:	true
+    #False:	false
+    #None:	null
+subprocess:
+    from subprocess import call, Popen, PIPE;
+    # Kill platform function
+    def killAction():
+        # get ubuntu version
+        output = Popen('cat /etc/issue | cut -d " " -f 2', stdout = PIPE, stderr = PIPE, shell = True);
+        out, err = output.communicate();
+        out = out.rstrip();
+        exitCode = call(["/var/www/html/fut-ui/userLogin.exp"], shell = True,);
+        return exitCode;
+        # graphDataTemplate.py
+        p = Popen(["tail", "-f", self.fname], stdout = PIPE)
+        line = out.readline() # read a line
+        os.system("kill -9 " + str(p.pid)) # Get the process id
+multiprocessing:
+    import multiprocessing
+    from multiprocessing import Process
+        for date in dates:
+            print date;
+            thread[found] = Process(target = createFiles, args = (date,));
+            thread[found].start();
+            activeCount += 1;
+            found = activeCount;
+            while activeCount == maxThreads:
+                found = -1;
+                for curThread in range(maxThreads):
+                    if thread[curThread].is_alive():
+                        continue;
+                    else:
+                        found = curThread;
+                        activeCount -= 1;
+                        break;
+                if found >= 0:
+                    break;
+        for curThread in range(maxThreads):
+            try:
+                os.wait();
+            except OSError, e:
+                if e.errno != errno.ECHILD:
+                    raise;
+                else:
+                    break;
+threading:
+    t = Thread(target = self.writeQueue, args = (p.stdout, q))
+    t.start()
+    t1 = Thread(target = self.updData, args = (p, q))
+    t1.start()
+os:
+    rootdir = os.getcwd() + "/"; # current working directory
+    if (os.stat(fname)[6] == 0): # get file size
+    os.remove(reportfile)
+    os.system("mkdir -p " + dest_file_loc)
+    if not os.path.isfile(dest_file):
+    if not os.path.exists(dfile) or not (os.path.getsize(dfile) > 0):
+    os.chdir(rootdir)
+operator:
+    from operator import itemgetter
+    prodstgylist = sorted(prodstgylist, key = itemgetter(0), reverse = True) # Return a callable object that fetches item from its operand using the operand’s # __getitem__() method. If multiple items are specified, returns a tuple of lookup values
+    for item in sorted(stgyDict.values(), key = operator.attrgetter('firstnum', 'vername'), reverse = True): # Return a callable object that fetches attr from # its operand. If more than one attribute is requested, returns a tuple of attributes.
+glob:
+    files = sorted(glob.glob(pfDir + "/portfolio_summary_*.csv")); # Returns as a list
+csv:
+    # Write csv method is writerow
+    fcsv = csv.writer(f)
+    fcsv.writerow(row) # row is a list
+    # Read csv and write to stdout
+    cfn = open(prevDayFile, "rb");
+    creader = csv.reader(cfn);
+    # with open a file  and pass it to csv reader/writer
+    with open(self.fname) as fin:
+        f = csv.reader(fin)
+datetime:
+    dname = datetime.date.today().strftime("%Y-%m-%d") # Return a string representing the date, controlled by an explicit format string.
+    datename = datetime.datetime.strptime(str(mktTime), "%Y%m%d%H%M%S"); # Return a datetime corresponding to date_string, parsed according to format. This is #equivalent to datetime(*(time.strptime(date_string, format)[0:6])). ValueError is raised if the date_string and format can’t be parsed by time.strptime() #or if it returns a value which isn’t a time tuple.
+    bkp_dir = curdir + "_" + datetime.date.today().strftime("%Y%m%d_%H%M")
+decimal:
+    from decimal import getcontext, Decimal;
+    getcontext().prec = 6;
+    cprice = Decimal(row[4]);
+sys:
+    sys.exit(2);
+    opts, args = getopt.getopt(sys.argv[1:], "d:htz"); # The list of command line arguments passed to a Python script. argv[0] is the script name (it is #operating system dependent whether this is a full pathname or not). If the command was executed using the -c command line option to the interpreter, #argv[0] is set to the string '-c'. If no script name was passed to the Python interpreter, argv[0] is the empty string.
+time:
+    today = time.strftime("%Y%m%d") # Convert a tuple or struct_time representing a time as returned by gmtime() or localtime() to a string as specified by the #format argument. If t is not provided, the current time as returned by localtime() is used. format must be a string
+    # time.strptime
+    #Parse a string representing a time according to a format. The return value is a struct_time as returned by gmtime() or localtime().
+    >>> import time
+    >>> time.strptime("30 Nov 00", "%d %b %y") 
+    time.struct_time(tm_year=2000, tm_mon=11, tm_mday=30, tm_hour=0, tm_min=0,
+                 tm_sec=0, tm_wday=3, tm_yday=335, tm_isdst=-1)
+StringIO:
+    ofn = StringIO.StringIO();
+    contents = ofn.getvalue();
+math:
+    if (math.isnan(pfCurTrade["palloc_ratio"])): # Check if the float x is a NaN (not a number)
+ast:
+    val = ast.literal_eval(conf) # Safely evaluate an expression node or a Unicode or Latin-1 encoded string containing a Python literal or container display. # The string or node provided may only consist of the following Python literal structures: strings, numbers, tuples, lists, dicts, booleans, and None.
+inspect:
+    cmeDailyUpdate.py:    print "Usage:%s -d {trade day in mmddyy format} -h {help} -z {prod} -t {test cron}" % (inspect.stack()[0][1]);
+    (inspect.stack()[0][1]) - python script name
+    Return a list of frame records for the caller’s stack. The first entry in the returned list represents the caller; the last entry represents the outermost call on the stack.
+locale:
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8');
+    rptdata.allocated += "<td id=\"tdfmt\">" + locale.format("%d", stgyAlloc, grouping = True) + "</td>";
+commands:
+    cmd = "ls /itchfiles/{0}/ | tail -1 | cut -c 2-7".format(year)
+    lastTradedDay=commands.getoutput(cmd) # the return value is a string containing the command’s output, Deprecated since version 2.6: The commands module has # been removed in Python 3. Use the subprocess module instead.
+smtplib, email:
+import smtplib
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+# Mail trading report
+def mail(to, subject, html):
+   msg = MIMEMultipart()
+   msg['From'] = sender
+   msg['To'] = to
+   msg['Subject'] = subject
+   msgAlternative = MIMEMultipart('alternative')
+   msgText=MIMEText(html, 'html')
+   msgAlternative.attach(msgText)
+   msg.attach(msgAlternative)
+   #mailServer = smtplib.SMTP("smtp.gmail.com", 25)
+   #mailServer = smtplib.SMTP("10.8.128.47", 25)
+   mailServer = smtplib.SMTP("smarthost.artimancapital.com",25)
+   mailServer.ehlo()
+   mailServer.starttls()
+   mailServer.ehlo()
+   #mailServer.login(sender, gmail_pwd)
+   mailServer.sendmail(sender, to, msg.as_string())
+   mailServer.close()
+   print "Report sent succesfully - ",to
+urllib2:
+    # CME
+    hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
+    try:
+        request = urllib2.Request(self.url, headers = hdr);
+        soup = bs(urllib2.urlopen(request).read())
+        table = soup.find('table', {"id":"quotesFuturesProductTable1"})
+        tbody = table.find('tbody')
+        rows = tbody.findAll('tr')
+    # NASDAQ
+    try:
+    hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+           'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+           'Accept-Encoding': 'none',
+           'Accept-Language': 'en-US,en;q=0.8',
+           'Connection': 'keep-alive'}
+    request = urllib2.Request('http://www.nasdaq.com', headers = hdr);
+    response = urllib2.urlopen(request);
+    page = response.readlines();
+warnings
+errno
+--------------
+-->varenya soft tech
+-> what are all advantages of python, why we use python over c++
+Python is an interpreted language. That means that, unlike languages like C and its variants, Python does not need to be compiled before it is run.
+Python is dynamically typed, this means that you don't need to state the types of variables when you declare them or anything like that. You can do things like x=111 and then x="string" without error
+No memory management. You don't have to explicitly allocate memory for new variables, and you don't have to explicitly free memory you're done with. The interpreter will allocate memory for you and free it when it's safe to do so.
+High-level native data types. Strings, tuples, lists, sets, dictionaries, file objects and more are built-in. 
+Cost savings in development and maintenance
+Huge standard library.
+Great support for building web apps
+
+-> custom exception.. inherit class Exception
+class CustomError(Exception): # Define a class inherit from an exception type
+    def __init__(self, arg):        
+        self.msg = arg # Set some exception infomation
+try:
+    raise CustomError('This is a CustomError') # Raise an exception with argument
+except CustomError as e:
+    print 'Error: ', e.msg # Catch the custom exception
+    
+3) there is interface, how will you override a method
+class Parent():
+    def __init__(self):
+        self.value = 5
+    def get_value(self):
+        return self.value
+class Child(Parent):
+    def get_value(self):
+        return self.value + 1
+p = Parent()
+c = Child()
+print p.get_value() #5
+print c.get_value() #6
+
+4) REST API, passing data from java script to python, - not used in my project
+
+5) what is the super class of Exception - BaseException
+
+6) given a str "ABCDEFGHIJ" mask AEIOU with X 
+res = ""
+S = "ABCDEFGHIJ"
+for c in S:
+    if c in 'AEIOU':
+        res += 'x'
+    else:
+        res += c
+print res
+        
+7) there are crores of record, i want to do a saving points at particular stage.. instead of doing a full rollback - MySql save points
+http://dev.mysql.com/doc/refman/5.7/en/savepoint.html
+The SAVEPOINT <savepoint_name> - statement sets a named transaction savepoint with a name of identifier. If the current transaction has a savepoint with the same name as the older, the old savepoint is deleted and a new one is set.
+The ROLLBACK TO SAVEPOINT <savepoint_name> - statement rolls back a transaction to the named savepoint without terminating the transaction.
+The RELEASE SAVEPOINT <savepoint_name> - statement removes the named savepoint from the set of savepoints of the current transaction. No commit or rollback occurs
+Example:
+START TRANSACTION;
+LOCK TABLES orders WRITE;
+INSERT DATA INFILE 'customer_orders.sql' INTO TABLE orders;
+SAVEPOINT orders_import;
+INSERT DATA INFILE 'customer_orders1.sql' INTO TABLE orders;
+SAVEPOINT orders_import1;
+INSERT DATA INFILE 'customer_orders2.sql' INTO TABLE orders;
+ROLLBACK TO SAVEPOINT orders_import1;
+
+--2)Wipro digital
+-online test
+1)Anagram of a str is palindrome
+If len(str) is even, count of each elemnt should be even.
+If len(str) is odd, count of ONLY one element should be odd, counts of all other elements should be even.
+sol1:
+function processData(input) {
+    //Enter your code here
+    var count = {}
+    for(index in input){
+        if(count[input[index]] == undefined){
+            count[input[index]] = 1
+        }else{
+            count[input[index]]++
+        }
+    }
+    sum = 0
+    for(el in count){
+        sum = sum + (count[el] % 2)
+    }
+    if(sum >= 2){
+        process.stdout.write("NO\n")
+    }else{
+        process.stdout.write("YES\n")
+    }
+} 
+sol2:
+function processData(input) {
+    //Enter your code here
+    var count = {}
+    for(el in input){
+        if(count[input[el]] == undefined){
+            count[input[el]] = 1
+        }else{
+            count[input[el]]++
+        }
+    }
+    if(input.length % 2 == 0){
+        len = "even"
+    }else{
+        len = "odd"
+    }
+    var even_count = 0
+    var odd_count = 0
+    for(ind in count){
+        if(count[ind] % 2 == 0){
+            even_count++
+        }else{
+            odd_count++
+        }        
+    }
+    if(len == "even" && odd_count == 0){
+        process.stdout.write("YES\n")
+    }else if(len == "odd" && odd_count == 1){
+        process.stdout.write("YES\n")
+    }else{
+        process.stdout.write("NO\n")
+    }    
+} 
+
+2)resize: horizontal - The user can adjust the width of the element
+
+-first round
+1)100000 element, find duplicate elements 
+var count = {}
+var numbers = [9, 9, 8, 5, 6, 4, 5, 6, 7, 8, 8, 0]
+for(id in numbers){  
+	if(count[numbers[id]] == undefined){
+    count[numbers[id]] = 1;
+  }else{
+    count[numbers[id]]++;
+  }
+}
+for(id in count){
+	if(count[id] > 1){
+  	console.log(id+'\n')
+  }
+}
+
+2)50 floors, 2 marbles find the minimum number of try to find the threshold value marble breaks.
+http://www.programmerinterview.com/index.php/puzzles/2-eggs-100-floors-puzzle/
+solve this -> x(x+1)/2 = number of floors
+x2 + x - 2(no of floors) = 0
+(-b +- sqrt(b2 - 4ac))/2a
+x(x+1)/2 -> x^2+x=100 -> x^2+x-100 -> solve this using above Quadratic formula you will get 9.5 round to 10 -> 10 is answer
+for 50 floors, two eggs -> 10, for 100 floors, two eggs -> 14
+
+3)display inline& block
+A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can).
+The <div> element is a block-level element.
+Examples of block-level elements:
+<p>
+<div>
+<h1> - <h6>
+<form>
+Inline Elements:
+An inline element does not start on a new line and only takes up as much width as necessary.
+This is an inline <span> element inside a paragraph.
+Examples of inline elements:
+<span>
+<a>
+<img>
+
+4)What is a callback?write a callback?
+A reference to executable code, or a piece of executable code, that is passed as an argument to other code.
+A callback function, also known as a higher-order function, is a function that is passed to another function (let’s call this other function “otherFunction”) as a parameter, and the callback function is called (or executed) inside the otherFunction
+Consider this common use of a callback function in jQuery:
+//Note that the item in the click method's parameter is a function, not a variable.​
+​//The item is a callback function
+$("#btn_1").click(function() {
+  alert("Btn 1 Clicked");
+});
+As you see in the preceding example, we pass a function as a parameter to the click method. And the click method will call (or execute) the callback function we passed to it. This example illustrates a typical use of callback functions in JavaScript, and one widely used in jQuery.
+Another Example:
+function test(param1, param2, callback) {
+    alert('Passed params: ' + param1 + ', ' + param2);
+    if(callback && typeof(callback) == "function"){
+        callback();
+    }
+}
+test('test1', 'test2', function() {
+    alert('done');
+});
+
+5)Display div elements side by side in the same row
+Just give them a width and float: left;, here's an example:
+<div style="width: 500px;">
+ <div style="float: left; width: 200px;">Left Stuff</div>
+ <div style="float: left; width: 100px;">Middle Stuff</div>
+ <div style="float: left; width: 200px;">Right Stuff</div>
+ <br style="clear: left;" />
+</div>
+http://www.w3schools.com/css/css_inline-block.asp
+The old way - using float (notice that we also need to specify a clear property for the element after the floating boxes):
+The same effect can be achieved by using the inline-block value of the display property (notice that no clear property is needed after floating the boxes)
+
+6)What is clear both will do?how will you handle overlapping div?
+The clear property specifies on which sides of an element floating elements are not allowed to float.
+left	No floating elements allowed on the left side
+right	No floating elements allowed on the right side
+both	No floating elements allowed on either the left or the right side
+
+7)jQuery AJAX call with post method
+$.ajax({
+    type: POST/GET/PUT,
+    url: "",
+    data: plain object/string/array,
+    success: function(data){
+    }
+    });
+    
+8)Write AJAX call in angular js
+AngularJS provides $http control which works as a service to read data from the server. The server makes a database call to get the desired records. AngularJS needs data in JSON format. Once the data is ready, $http can be used to get the data from server in the following manner −
+function studentController($scope,$http) {
+var url = "data.txt";
+   $http.get(url).success( function(response) {
+      $scope.students = response; 
+   });
+}
+Here, the file data.txt contains student records. $http service makes an ajax call and sets response to its property students. students model can be used to draw tables in HTML.
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http({
+    method : "GET",
+    url : "welcome.htm"
+  }).then(function mySucces(response) {
+      $scope.myWelcome = response.data;
+    }, function myError(response) {
+      $scope.myWelcome = response.statusText;
+  });
+});
+
+9)What is a box in css?
+All HTML elements can be considered as boxes. In CSS, the term "box model" is used when talking about design and layout.
+The CSS box model is essentially a box that wraps around every HTML element. It consists of: margins, borders, padding, and the actual content.
+margins
+borders
+padding
+content
+
+-second round
+1)what is static typing and dynamic typing
+Static typed programming languages are those in which variables need not be defined before they’re used. This implies that static typing has to do with the explicit declaration (or initialization) of variables before they’re employed. C, C++, Java are example of a static typed language
+Static typing does not imply that you have to declare all the variables first, before you use them; variables maybe be initialized anywhere, but developers have to do so before they use those variables anywhere. Consider the following example:
+/* C code */ 
+static int num, sum; // explicit declaration 
+num = 5; // now use the variables 
+sum = 10; 
+sum = sum + num;
+Dynamic typed programming languages are those languages in which variables must necessarily be defined before they are used. This implies that dynamic typed languages do not require the explicit declaration of the variables before they’re used. Python is an example of a dynamic typed programming language
+/* Python code */ 
+num = 10 // directly using the variable
+
+2)What are main componenets of Angular Js?
+http://www.tutorialspoint.com/mvc_framework/mvc_framework_introduction.htm
+MVC-Model View Controller
+Exp1:
+the Model is the part of the code that knows things
+the View is the part of the code that shows the things the Model knows
+the Controller is the part of the code that gets commands from the user and tells the View what to show and the Model what to know.
+Exp2:
+Model: Simply, your data (though some logic can exist here as well)
+View: What you see and interact with
+Controller: The logic needed to bridge the model and the view
+Exp3:
+Data (Model)
+An interface to view and modify the data (View)
+Operations that can be performed on the data (Controller)
+Exp4:
+Model − It is the lowest level of the pattern responsible for maintaining data.
+View − It is responsible for displaying all or a portion of the data to the user.
+Controller − It is a software Code that controls the interactions between the Model and View.
+MVVM - Model View ViewModel
+MVP - Model View Presenter
+
+3)Why we need to use java script frame works
+Templating
+Data-binding
+routing (single page app)
+clean, modular, reusable architecture
+security
+additional functions/features for convenience
+Efficiency:
+Tasks that usually would take you hours and hundreds of lines of code to write, can now be done in minutes with pre-built functions. Development becomes a lot easier, so if it’s easier it’s faster, and consequently efficient.
+Security:
+A widely used framework has big security implementations. The big advantage is the community behind it, where users become long-term testers. If you find a vulnerability or a security hole, you can go to the framework’s website and let the team know so they can fix it.
+Cost:
+Most popular frameworks are free, and since it also helps the developer to code faster, the cost for the final client will be smaller.
+Support:
+As any other distributed tool, a framework usually comes with documentation, a support team, or big community forums where you can obtain quick answers.
+
+4)What are all the firebug tabs/chrome tabs
+firebug tab names: console, html, css, script, DOM, Net, cookies
+chrome tab names: Elements, console, sources, network, timeline, profiles, Resources, security, audits
+
+5)json syntax, JSON is a string
+JSON names require double quotes. JavaScript names don't.
+var json_str = '{"name":"ravi", "age":56}' - valid str, valid JSON
+var json_str = '{'name':'ravi', 'age':56}' - invalid str & JSON
+var json_str = "{'name':'ravi','age':56}" - valid str, invalid JSON
+
+6)How will you validate a json/what ever type of data you are receiving
+typeof - To check type of data of a variable
+To validate JSON:
+sol1:
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+sol2:
+function tryParseJSON (jsonString){
+    try {
+        var o = JSON.parse(jsonString);
+        // Handle non-exception-throwing cases:
+        // Neither JSON.parse(false) or JSON.parse(1234) throw errors, hence the type-checking,
+        // but... JSON.parse(null) returns 'null', and typeof null === "object", 
+        // so we must check for that, too.
+        if (o && typeof o === "object" && o !== null) {
+            return o;
+        }
+    }
+    catch (e) { }
+    return false;
+};
+
+7)Name some tags in HTML5
+<a>	- Defines a hyperlink
+<button> - Defines a clickable button
+<input> - Defines an input control
+<header> - Defines a header for a document or section
+
+8)What is mobility, analytics and devops
+Analytics: Analytics is the discovery, interpretation, and communication of meaningful patterns in data. Especially valuable in areas rich with recorded information, analytics relies on the simultaneous application of statistics, computer programming and operations research to quantify performance. Analytics often favors data visualization to communicate insight.Firms may apply analytics to business data to describe, predict, and improve business performance
+Devops: DevOps is the practice of operations and development engineers participating together in the entire service lifecycle, from design through the development process to production support.
+DevOps is also characterized by operations staff making use many of the same techniques as developers for their systems work.
+Why do DevOps?
+The benefits of a DevOps approach are many, including:
+Improved deploy frequency which can lead to faster time to market
+Lower failure rate
+Shortened lead time
+Faster mean time to recovery
+SMAC: Social Media, Mobile computing, Analytics, Cloud computing 
+So the term to Innovate in SMAC usually means is to continously improve and find new ways to fulfill consumer and commercial growth
+for eg:-
+(1) Social Media- To suggest common friends in Facebook
+(2) Mobility- To enable people to use apps like Uber and Ola
+(3) Cloud- To enable users to upload GB of data on the web 
+On top of the S, M and C sits the A, the analysts who look for new ways to make life easier for consumers and also make more profits for the firms(Hey that pays us ;-) )
+http://www.mariner-usa.com/blog/smac-understanding-elements-social-mobile-analytics-cloud/
+Mobility:Mobile is not just about mobile phones. It is about mobility. And mobility goes to the core of how humans like to work. With the recent trend of wearables, its evident that the mobile capabilities are spreading beyond phones and tablets.
+LAMP stack is a popular open source web platform commonly used to run dynamic web sites and servers. It includes Linux, Apache, MySQL, and PHP/Python/Perl and is considered by many the platform of choice for development and deployment of high performance web applications which require a solid and reliable foundation.
+Big data analytics is the process of examining large data sets containing a variety of data types -- i.e., big data -- to uncover hidden patterns, unknown correlations, market trends, customer preferences and other useful business information.
+
+9)what is Frontend pattern
+
+10)how will you write css?for id, class?
+html-tag-name{
+    decorator: value
+}
+#id-name{
+}
+.class-name{
+}
+
+11)margin property for all the side:
+The margin property is a shorthand property for the following individual margin properties:
+margin-top, margin-right, margin-bottom, margin-left
+p {
+    margin: 100px 150px 100px 80px;
+}
+
+12)SAAS, PAAS, IAAS three different ways in cloud
+SAAS - Software as a service - Allow users to run existing online applications
+        Where off-the-shelf applications accessed over the internet Ex: Google Docs, ZOHO, Microsoft office web apps
+PAAS - Platform as a service - Allows users to create their own cloud applications using supplier specific tools and languages
+        Provides environment and tools for creating new online applications Ex: Google App Engine, windows azure platform, force.com (salesforce)
+IAAS - Infrastructure as a service - Allows user to run any applications they please on cloud hardware of their own choice.
+        Allows existing applications to be run on a cloud supplier's hardware. Ex. Amazon web services, Rackspace hosting, gogrid
+        private cloud - Specific number of physical servers dedicated to one customer
+        Dedicated hosting - Rent specific number of servers based on requirements 
+        Hybrid hosting - Physical server and virtual server instances
+        Cloud hosting - rent virtual server instances 
+        
+--3)KNAB Finance limited:
+coding test:
+1)Ulam spiral matrix in python
+
+--4)HCL-Python Developer
+-round1
+1)Reversal string and length of the string without using built-in function and slice
+def length(text):
+    count = 0
+    for char in text:
+        count += 1
+    return count    
+def reverse(text):
+    r_text = ''
+    index = length(text) - 1
+    while index >= 0:
+        r_text += text[index] #string can be concatenated
+        index -= 1
+    return r_text
+print reverse("hello, world!")
+
+2)No of vowels, count each vowel char how many times repeated 
+def noOfVowels(s):
+    count = {}
+    for char in s:
+        if char in 'aeiouAEIOU':
+            if count.has_key(char):
+                count[char] += 1
+            else:
+                count[char] = 1
+    for key in sorted(count.keys()):
+        print key, count[key]
+noOfVowels("test")
+
+3)sample program for decorator with passing parameter
+def testDivide(func):
+    print a, b
+    def inner(a,b):
+        print "Result:",  # Note: print("Result",) literally prints => ("Result",)
+        if b == 0:
+            return "Cannot divide"
+        return func(a,b)
+    return inner
+@testDivide
+def divide(a,b):
+    return a/b
+print divide(5, 4)
+print divide(5, 0)
+
+->validate ip address 
+def validate(ip):
+    flag = False
+    try:
+        fields = ip.split(".")
+        if len(fields) == 4 and all(int(el) >= 1 and int(el) <=255 for el in fields):
+            flag = True
+    except:
+        pass
+    if flag:
+        print("{0} is a vaild ip addess".format(ip))
+    else:
+        print("{0} is not a vaild ip addess".format(ip)) 
+validate("10.1.1.1")
+validate("10.1.1.x")    
+
+->try to open a file if it is exist write 123 if it is not exist create the file and write 456
+import os
+def write_file(fname):
+    mode = None
+    s = None
+    if os.path.exists(fname):
+        mode = "a"
+        s = "123"
+    else:
+        mode = "w"
+        s = "456"
+    with open(fname, mode) as f:
+        f.write(s)
+write_file("test.txt")  
+
+6)given two lists return the sum of one to one mapping..the no of elements is differs..
+def add_lists(a, b):
+    if len(a) > len(b):
+        for ind in range(len(a)-len(b)):
+            b.append(0)
+    elif len(a) < len(b):
+        for ind in range(len(b)-len(a)):
+            a.append(0)
+    print [row[0] + row[1] for row in zip(a, b)]
+add_lists([1, 2, 3, 5, 6], [4, 6, 7])
+
+7)write a program for exception handling ..
+try:
+    ans = 5/0
+except Exception as e:
+    print e
+    
+8)how will you know what type of exception..you don't know what is the exception occurred..
+sys.exc_info()[0] prints the name(class name) of exception without catching 
+Ex:
+import sys
+try:
+    l = 5/0
+except:
+    print sys.exc_info()[0]
+output: <type 'exceptions.ZeroDivisionError'>
+Ex:
+try:
+    l = 5/0
+except Exception as e:
+    print e.__class__
+output: <type 'exceptions.ZeroDivisionError'>
+
+9)Sum can be used for tuple? Yes, sum can be used for list, tuple, set
+
+10)multiple inheritance MRO for a method, super class call. left to right, right to left?
+In the multiple inheritance scenario, any specified attribute is searched first in the current class. If not found, the search continues into parent classes in depth-first, left-right fashion without searching same class twice.
+class Base1(object):
+    pass
+class Base2(object):
+    pass
+class MultiDerived(Base1, Base2):
+    pass
+So, in the above example of MultiDerived class the search order is [MultiDerived, Base1, Base2, object]. This order is also called linearization of MultiDerived class and the set of rules used to find this order is called Method Resolution Order (MRO)
+
+-round2
+->what you mean by copy object? how to do it?
+>>> import copy
+>>> a = {1: [1,2,3]}
+>>> b = copy.copy(a) # By "shallow copying" it means the content of the dictionary is not copied by value, but just creating a new reference.
+>>> a, b
+({1: [1, 2, 3]}, {1: [1, 2, 3]})
+>>> a[1].append(4)
+>>> a, b
+({1: [1, 2, 3, 4]}, {1: [1, 2, 3, 4]})
+>>> c = copy.deepcopy(a)  # In contrast, a deep copy will copy all contents by value.
+>>> a, c
+({1: [1, 2, 3, 4]}, {1: [1, 2, 3, 4]})
+>>> a[1].append(5)
+>>> a, c 
+({1: [1, 2, 3, 4, 5]}, {1: [1, 2, 3, 4]}) 
+So:
+a = b: Reference assignment, Make a and b points to the same object.
+a ---,
+     v
+     {1: L}
+     ^   |
+b ---'   '----> [1,2,3]
+a = b.copy(): Shallow copying, a and b will become two isolated objects, but their contents still share the same reference
+a ---> {1: L}
+           |             
+           >---> [1,2,3]
+           |
+b ---> {1: M}
+a = copy.deepcopy(b): Deep copying, a and b's structure and content become completely isolated.
+a ---> {1: L}
+           ‘-----> [1,2,3]
+b ---> {1: M}
+           ‘-----> [1,2,3]
+For list, Dont see any difference between shallow copy and deep copy, it is visible for dict
+import copy
+a = [1, 2, 3]
+b = a
+c = copy.copy(a)
+d = copy.deepcopy(a)
+print(id(a), id(a[0]))  # (43167696, 7042704)
+print(id(b), id(b[0]))  # (43167696, 7042704)
+print(id(c), id(c[0])) # (43195848, 7042704)
+print(id(d), id(d[0])) # (43166896, 7042704)
+d.append(4)
+print(id(d), id(d[0])) # (43166896, 7042704)
+import copy
+a = { 0: [1, 2, 3]}
+b = a
+c = copy.copy(a)
+d = copy.deepcopy(a)
+print(id(a), id(a[0])) # (41558784, 41529296)
+print(id(b), id(b[0])) # (41558784, 41529296)
+print(id(c), id(c[0])) # (41559936, 41529296)
+print(id(d), id(d[0])) # (41560224, 41528496)
+
+->write a lambda function to add three numbers: lambda x,y,z:x+y+z
+
+->what is operator overloading, example
+change the meaning of an operator in Python depending upon the operands used. This practice is known as operating overloading.
+class Point():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return "({0}, {1})".format(self.x, self.y)
+    def __add__(self, other):
+        return (self.x + other.x, self.y + other.y)
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+print p1 # (1, 2)
+print p1 + p2  # (4, 6)
+
+->what is function overriding, example
+In Python method overriding occours simply defining in the child class a method with the same name of a method in the parent class
+class Parent:        # define parent class
+   def testMethod(self):
+      print 'Calling parent method'
+class Child(Parent): # define child class
+   def testMethod(self):
+      print 'Calling child method'
+c = Child()          # instance of child
+c.myMethod()         # child calls overridden method
+
+->pickling and unpickling
+We have been working with simple textual data. What if we are working with objects rather than simple text? For such situations, we can use the pickle module. This module serializes Python objects. The Python objects are converted into byte streams and written to text files. This process is called pickling. The inverse operation, reading from a file and reconstructing objects is called deserializing or unpickling
+
+->What is inheritence, example
+It refers to defining a new class with little or no modification to an existing class. The new class is called derived (or child) class and the one from which it inherits is called the base (or parent) class.
+#! /usr/bin/python
+class SchoolMember(object):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        print "Initializing SchoolMember {}".format(self.name)
+    def tell(self):
+        print "Name: {}, Age: {}".format(self.name, self.age),
+class Student(SchoolMember):
+    def __init__(self, name, age, marks):
+        SchoolMember.__init__(self, name, age)
+        self.marks = marks
+        print "Initializng student {}".format(self.name)
+    def tell(self):
+        SchoolMember.tell(self)
+        print "Marks: {}".format(self.marks)
+class Teacher(SchoolMember):
+    def __init__(self, name, age, salary):
+        SchoolMember.__init__(self, name, age)
+        self.salary = salary
+        print "Initializing teacher {}".format(self.name)
+    def tell(self):
+        SchoolMember.tell(self)
+        print "Salary: {}".format(self.salary)
+s = Student("ravi", 20, 78)
+t = Teacher("raghu", 40, 30000)
+s.tell()
+t.tell()
+Output:
+Initializing SchoolMember ravi
+Initializng student ravi
+Initializing SchoolMember raghu
+Initializing teacher raghu
+Name: ravi, Age: 20 Marks: 78
+Name: raghu, Age: 40 Salary: 30000
+How It Works:
+we observe that the __init__ method of the base class is explicitly called using the self variable so that we can initialize the base class part of the object. This is very important to remember - Python does not automatically call the constructor of the base class, you have to explicitly call it yourself.
+We also observe that we can call methods of the base class by prefixing the class name to the method call and then pass in the self variable along with any arguments.
+Also, observe that the tell method of the subtype is called and not the tell method of the SchoolMember class.
+
+->How instance variables are different from class variables?
+Instance variables: are the variables in an object that have values that are local to that object. Two objects of the same class maintain distinct values for their variables. These variables are accessed with “object-name.instancevariable-name”.
+class variables: these are the variables of class. All the objects of the same class will share value of “Class variables. They are accessed with their class name alone as “class-name.classvariable-name”.
+
+->What is multiple inheritance, example
+A class can be derived from more than one base classes in Python. This is called multiple inheritance.
+In multiple inheritance, the features of all the base classes are inherited into the derived class. The syntax for multiple inheritance is similar to single inheritance.
+Example:
+class Base1(object):
+    pass
+class Base2(object):
+    pass
+class MultiDerived(Base1, Base2):
+    pass
+    
+->what is multi-level inheritance, example
+we can also inherit form a derived class. This is called multilevel inheritance. It can be of any depth in Python.
+In multilevel inheritance, features of the base class and the derived class is inherited into the new derived class.
+class Base(object):
+    pass
+class Derived1(Base):
+    pass
+class Derived2(Derived1):
+    pass
+    
+->composition and inheritance
+Delegation means that an object shall perform only what it knows best, and leave the rest to other objects.
+Delegation can be implemented with two different mechanisms: composition and inheritance. Sadly, very often only inheritance is listed among the pillars of OOP techniques, forgetting that it is an implementation of the more generic and fundamental mechanism of delegation; perhaps a better nomenclature for the two techniques could be explicit delegation (composition) and implicit delegation (inheritance).
+Please, please, please do not forget composition: in many cases, composition can lead to simpler systems, with benefits on maintainability and changeability.
+Usually composition is said to be a very generic technique that needs no special syntax, while inheritance and its rules are strongly dependent on the language of choice
+Here's a simplistic example of object composition (using Python, of course, as our demonstration language):
+class UserDetails(object):
+    email = "testuser@gmail.com"
+    homepage = "www.testuser.com"
+class User(object):
+    first_name = "test"
+    last_name = "user"
+    details = UserDetails()
+we have created a namespace for each User object, "details", which contains the extra information about that particular user.
+An example of the same objects, modified to use object inheritance might look as follows:
+class User(object):
+    first_name = "test"
+    last_name = "user"
+class UserDetails(User):
+    email = "testuser@gmail.com"
+    homepage = "www.testuser.com"
+Now we have a flat namespace, which contains all of the attributes from both of the objects. In the case of any collisions, Python will take the attribute from UserDetails.
+Composition is a way of aggregating objects together by making some objects attributes of other objects. 
+Inheritance is a way of arranging objects in a hierarchy from the most general to the most specific. An object which inherits from another object is considered to be a subtype of that object.all objects in Python inherit from object
+
+10)what is mean by self, what it represents
+Generally, when we call an instance method with some arguments, the corresponding class function is called by placing the method's object before the first argument. So, anything like obj.method(args) becomes Class.method(obj, args). The calling process is automatic while the receiving process is not (its explicit).i.e., at function defintion first arg should be self
+This is the reason the first parameter of a function in class must be the object itself. Writing this parameter as self is merely a convention. It is not a keyword and has no special meaning in Python.
+
+11)How will you call a super class constructor
+It is a “shortcut” to allow you to access the base class of a derived class, without having to know or type the base class name. For example:
+python 2.7 - possible options to call base class init/func
+class Base(object):
+    def __init__(self):
+        print("Base init")
+    def test(self):
+        print("Base test") 
+class Derived(Base):
+    def __init__(self):
+        super(Derived, self).__init__()
+        Base.__init__(self)
+    def test(self):
+        super(Derived, self).test()
+        Base.test(self)
+        # Below are only possible in python 3.x
+        super().__init__()
+        super().test()
+
+12) What is the order of precedence in python?
+For order of precedence, just remember this PEDMAS.
+Operators with the same precedence are evaluated in which manner - Left to Right
+i) Parentheses
+ii) Exponential
+iii) Division
+iv) Multiplication
+v) Addition
+vi) Subtraction
+
+->Multiprocessing, how will you implement? i used as threads = {}: look at ~/Work/svn/root/acm/trunk/blr/i2infra/pana_create_files.py
+The multiprocessing module lets you write parallelized code using processes in relatively simple code
+The simplest way to spawn a second is to instantiate a Process object with a target function and call start() to let it begin working.
+EX:
+import multiprocessing
+def worker(arg):
+    print 'Worker', arg
+    return
+if __name__ == '__main__': 
+    jobs = []
+    for i in range(5):
+        p = multiprocessing.Process(target = worker, args = (i, ))
+        p.start()
+        jobs.append(p)
+    for j in jobs:
+        j.join()
+without main function throws
+RuntimeError: 
+            Attempt to start a new process before the current process
+            has finished its bootstrapping phase.
+So, How does multiprocessing module solve the problem ?
+– It uses subprocesses instead of thread.
+– Therefore, it allow the programmer to fully leverage multiple processors on a given machine. 
+
+-> Thread, Threading, Multiprocessing   C:\ravi\shared_ubuntu\Prog_Docs\python\Multiprocessing_module.pdf
+Thread : is a thread of execution in a program. Aka, lightweight process.
+Process : is an instance of a computer program that is being executed.
+Thread share the memory and state of the parent, process share nothing.
+Process use inter-process communication to communicate, thread do not.
+Python has three concurrency modules : Thread, Threading, Multiprocessing
+– Thread :
+• Provides low-level primitives for working with multiple threads.
+• Python first implementation of thread, it is old.
+• Not included in Python 3000 .
+– Threading :
+• Construct higher-level threading interface on top of thread module.
+•Why multiprocessing module?
+–Python Global Interpreter Lock, GIL, limitation prevents a true parallelism in multi processors machines.
+•What is GIL ?
+–Lock which must be acquired for a thread to enter the interpreter‟s space.
+–Lock assures that only one thread executes in the cPythonVM at a time.
+•How GIL works ?
+–It controls the transfer of control between threads. Python interpreter determine how long a thread‟s turn runs, NOT the hardware timer.
+–Python uses the OS threads as a base but python itself control the transfer of control between threads.
+•For the above reason, true parallelism won‟t occur with Threading module.
+•So, They came up with Multiprocessing to solve this issue.
+Multiprocessing :
+• Supports spawning process.
+• Offer local and remote concurrency
+• New in python 2.6.
+• Solves the issue in the threading module.
+Multiprocessing module has two communication channels: Queues, Pipes
+Multiprocessing module has two ways to share state between processes: Shared memory, server process
+
+15)What is lambda, map, reduce, filter, exmaple for them.
+lambda:
+In Python, anonymous function is a function that is defined without a name.
+While normal functions are defined using the def keyword, in Python anonymous functions are defined using the lambda keyword.
+Hence, anonymous functions are also called lambda functions
+syntax: lambda arguments: expression
+Example:
+double = lambda x: x * 2
+print(double(5)) # Output: 10
+print(lambda x: x * 2) # output: <function <lambda> at 0x02987870>
+This function has no name. It returns a function object which is assigned to the identifier double
+map:
+The map(aFunction, aSequence) function applies a passed-in function to each item in an iterable object and returns a list containing all the function call results.
+Ex: map(str, [1, 2, 3]) # python 2.7 - map function returns list, python 3 - map function returns map object
+equivalent to 
+l = []
+for el in [1, 2, 3]:
+    l.append(str(el))
+Reduce:
+This function reduces a list to a single value by combining elements via a supplied function
+reduce(function, sequence) returns a single value constructed by calling the binary function on the first two items of the sequence, then on the result and the next item, and so on
+Es: reduce(lambda x, y: x * y, [1, 2, 3]) # output 6 (python 2.7/python 3 - for python 3.x you have to import from functools)
+equivalent to
+l = [1, 2, 3]
+result = l[0]
+for el in l[1:]:
+    result = result * el
+print result
+filter:
+filter extracts each element in the sequence for which the function returns True
+Ex: filter(lambda x : x > 0, range(-5, 5)) #python 2.7 - filter function returns list, python 3 - filter function returns filter object
+equivalent to 
+result = []
+for el in range(-5, 5):
+    if x > 0:
+        result.append[x]
+list comprehension:
+List comprehension is a complete substitute for the lambda function as well as the functions map(), filter() and reduce()
+List Comprehensions are faster than FOR loop, map, filter, reduce
+List comprehensions apply an arbitrary expression to items in an iterable rather than applying function
+ex: test = [x*2 for x in [1, 2, 3]]
+
+16)Generator:
+A generator is an iterator but it returns a single value at a time and maintains the iteration count between call
+generator executes till it encounters a yield statement. The value written after yield will get returned and execution stops. If yield is not found, it returns an error.
+def test_gen(n):
+    for i in range(n):
+        yield i
+l = test_gen(3)
+print l
+for item in l:
+    print "first loop:", item
+for item in l:
+    print "second loop:", item
+output: 
+<generator object test_gen at 0x02491AF8>
+first loop: 0
+first loop: 1
+first loop: 2
+The biggest advantage is that generators have very low memory requirements as they return numbers on the fly. On the other hand, using simple LC will first create a list in memory and then sum it. However, generators might not perform well on small problems because they make many function calls making it slower. It should be used for solving computations which are too heavy on memory.
+
+->Give example for pass by value/reference ..Explain Python’s pass by references Vs pass by value
+Python uses a mechanism, which is known as "Call-by-Object", sometimes also called "Call by Object Reference" or "Call by Sharing".
+Python passes references-to-objects by value (like Java), and everything in Python is an object. This sounds simple, but then you will notice that some data types seem to exhibit pass-by-value characteristics, while others seem to act like pass-by-reference... what's the deal?
+It is important to understand mutable and immutable objects. Some objects, like strings, tuples, and numbers, are immutable. Altering them inside a function/method will create a new instance and the original instance outside the function/method is not changed. Other objects, like lists and dictionaries are mutable, which means you can change the object in-place. Therefore, altering an object inside a function/method will also change the original object outside.
+def modify(s, lst):
+    print(id(s), id(lst)) # (38688224, 40414904)
+    s = "change" # New memory address assigned example of pass by value
+    lst.append(5) # No change in memey address, example of pass by reference
+    print(id(s), id(lst)) # (38465216, 40414904) # string immutable assign new memory, list mutable change in place so, no change in reference
+a = "test"
+l = [1, 2, 3]
+print(id(a), id(l)) # (38688224, 40414904)
+modify(a, l)
+
+->open function 
+Open() function correct syntax with the parameter details as shown below:
+file object = open(file_name [, access_mode][, buffering])
+Here is parameters’ detail:
+file_name: The file_name argument is a string value that contains the name of the file that you want to access.
+access_mode: The access_mode determines the mode in which the file has to be opened, i.e., read, write, append, etc. A complete list of possible values is given below in the table. This is optional parameter and the default file access mode is read (r).
+r	Opens a file for reading only. The file pointer is placed at the beginning of the file. This is the default mode.
+rb	Opens a file for reading only in binary format. The file pointer is placed at the beginning of the file. This is the default mode.
+r+	Opens a file for both reading and writing. The file pointer placed at the beginning of the file.
+rb+	Opens a file for both reading and writing in binary format. The file pointer placed at the beginning of the file.
+w	Opens a file for writing only. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+wb	Opens a file for writing only in binary format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+w+	Opens a file for both writing and reading. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+wb+	Opens a file for both writing and reading in binary format. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+a	Opens a file for appending. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+ab	Opens a file for appending in binary format. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+a+	Opens a file for both appending and reading. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+ab+	Opens a file for both appending and reading in binary format. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+file object attributes:
+file.closed	Returns true if file is closed, false otherwise.
+file.mode	Returns access mode with which file was opened.
+file.name	Returns name of the file.
+file.softspace	Returns false if space explicitly required with print, true otherwise.
+
+--capgemini
+->what is __varname in defined in a class?how to access __varname in class?
+Since there is a valid use-case for class-private members (namely to avoid name clashes of names with names defined by subclasses), there is limited support for such a mechanism, called name mangling. Any identifier of the form __spam (at least two leading underscores, at most one trailing underscore) is textually replaced with _classname__spam, where classname is the current class name with leading underscore(s) stripped. 
+this means: 
+> class foo: __bar = None
+> print dir(foo)
+   ['__doc__', '__module__', '_foo__bar']
+(notice that member variable __bar was replaced by _foo__bar)
+Note that the mangling rules are designed mostly to avoid accidents; it still is possible to access or modify a variable that is considered private.
+#! /usr/bin/python
+class Count(object):
+    __count = 0
+    def inc(self):
+        self.__count += 1
+        print "count: ", self.__count
+c = Count()
+c.inc()                 # 1
+c.inc()                 # 2
+print c._Count__count   # 2
+class Encapsulation(object):
+    def __init__(self, a, b, c):
+        self.public = a
+        self._protected = b
+        self.__private = c
+>>> x = Encapsulation(11,13,17)
+>>> x.public
+11
+>>> x._protected
+13
+>>> x._protected = 23
+>>> x._protected
+23
+>>> x.__private
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Encapsulation' object has no attribute '__private'
+>>> 
+Name-Notation-Behaviour
+name-Public-Can be accessed from inside and outside
+_name-Protected-Like a public member, but they shouldn't be directly accessed from outside.
+__name-Private-Can't be seen and accessed from outside
+
+2)what is *args and **kwargs
+The syntax is the * and **. The names *args and **kwargs are only by convention but there's no hard requirement to use them.
+You would use *args when you're not sure how many arguments might be passed to your function, i.e. it allows you pass an arbitrary number of arguments to your function. For example:
+>>> def print_everything(*args):
+        for count, thing in enumerate(args):
+...         print '{0}. {1}'.format(count, thing)
+...
+>>> print_everything('apple', 'banana', 'cabbage')
+0. apple
+1. banana
+2. cabbage
+Similarly, **kwargs allows you to handle named arguments that you have not defined in advance:
+>>> def table_things(**kwargs):
+...     for name, value in kwargs.items():
+...         print '{0} = {1}'.format(name, value)
+...
+>>> table_things(apple = 'fruit', cabbage = 'vegetable')
+cabbage = vegetable
+apple = fruit
+You can use these along with named arguments too. The explicit arguments get values first and then everything else is passed to *args and **kwargs. The named arguments come first in the list. For example:
+def table_things(titlestring, **kwargs)
+You can also use both in the same function definition but *args must occur before **kwargs.
+You can also use the * and ** syntax when calling a function. For example:
+>>> def print_three_things(a, b, c):
+...     print 'a = {0}, b = {1}, c = {2}'.format(a,b,c)
+...
+>>> mylist = ['aardvark', 'baboon', 'cat']
+>>> print_three_things(*mylist)
+a = aardvark, b = baboon, c = cat
+As you can see in this case it takes the list (or tuple) of items and unpacks it. By this it matches them to the arguments in the function. Of course, you could have a * both in the function definition and in the function call.
+Ex:
+l = [1, 2]
+d = {"name":"ravi", "test":"test"} # Keys must be string, if one of the keys given as integer it will raise "take() keywords must be strings"
+def take(*l, **d):
+    for e in l:
+        print e
+    for k in d:
+        print k, d[k]
+take(*l, **d)
+output:
+1
+2
+test test
+name ravi
+
+--cellworks
+Python
+->Modules, packages, __init__.py
+The __init__.py file makes Python treat directories containing it as modules.
+Furthermore, this is the first file to be loaded in a module, so you can use it to execute code that you want to run each time a module is loaded, or specify the submodules to be exported.
+Files named __init__.py are used to mark directories on disk as Python package directories. If you have the files
+mydir/spam/__init__.py
+mydir/spam/module.py
+and mydir is on your path, you can import the code in module.py as
+import spam.module
+or
+from spam import module
+If you remove the __init__.py file, Python will no longer look for submodules inside that directory, so attempts to import the module will fail.
+The __init__.py file is usually empty, but can be used to export selected portions of the package under more convenient name, hold convenience functions, etc.
+The majority opinion seems to be that __init__.py files should be very thin to avoid violating the "explicit is better than implicit" philosophy. 
+
+->Subprocess/Queue how i used: blr/Futures/ui/intraDayFunc1.py, blr/Futures/ui/graphs/graphDataTemplate.py
+blr/Futures/ui/intraDayFunc1.py:
+from subprocess import call, Popen, PIPE
+ # Kill platform function
+ def killAction():
+     # get ubuntu version
+     output = Popen('cat /etc/issue | cut -d " " -f 2', stdout = PIPE, stderr = PIPE, shell = True);
+     out, err = output.communicate();
+     out = out.rstrip();
+     exitCode = call(["/var/www/html/fut-ui/userLogin.exp"], shell = True,);
+     return exitCode;
+     
+->How multiprocessing works
+You can run N thread simultaneously if you have N cores (if threads per core = 1). Though if you try to run more threads than you have processors, the operating system will run your threads one after the other by small 'slices' and they will seem to run in parallel.
+The multiprocessing module lets you write parallelized code using processes in relatively simple code. By leveraging system processes instead of threads, multiprocessing lets you avoid issues like the GIL.
+The Process is an abstraction that sets up another (Python) process, provides it code to run and a way for the parent application to control execution
+A Pool object controls a pool of worker processes. Jobs can be submitted to the Pool, which then sends the jobs to the individual workers.
+This method essentially applies a function to each element in an iterable and returns the results. 
+import multiprocessing
+def funSquare(num):
+    return num ** 2
+if __name__ == '__main__':
+    pool = multiprocessing.Pool(8)
+    results = pool.map(funSquare, range(10))
+    print(results)  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+->What is difference between == and is
+is checks for identity. a is b is True iff a and b are the same object (they are both stored in the same memory address).
+== checks for equality, which is usually defined by the magic method __eq__ - i.e., a == b is True if a.__eq__(b) is True.
+In your case specifically, Python optimizes the two hardcoded strings into the same object (since strings are immutable, there's no danger in that). Since input() will create a string at runtime, it can't do that optimization, so a new string object is created.
+x = 'asd'
+y = 'asd'
+z = input() #write here string 'asd'. For Python 2.x use raw_input()
+x == y # True.
+x is y # True.
+x == z # True.
+x is z # False.
+
+->How list and tuple differs,
+You can add items, delete items from a list; but you can't do that to a tuple, tuples have a fixed size.
+# Add elemet to a list
+nums = [1, 2, 3]
+print(id(nums)) # 41791160
+nums.append(4)
+print(id(nums)) # 41791160
+# Adding an item to tuple not possible, concatenate is possible
+tup = (1, 2, 3)
+print(id(tup)) # 38977088
+tup = tup + (1, 2)
+print(id(tup)) # 38961040
+
+->What are the built-in type does python provides?
+There are mutable and Immutable types of Pythons built in types 
+Mutable built-in types - List, Sets, Dictionaries
+Immutable built-in types - Strings, Tuples, Numbers
+
+->There are 1 Tb of data, I want to split into 250 GB, and run parallely using multi processing
+
+->Bank server, There are 10000 requests coming in, system will handle upto 5000 requests.. how will you handle this?if more than 5000 requests system will hung
+
+->Difference between python 2.7.x and python 3.x -> http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html
+The __future__ module
+Python 3.x introduced some Python 2-incompatible keywords and features that can be imported via the in-built __future__ module in Python 2. It is recommended to use __future__ imports it if you are planning Python 3.x support for your code. For example, if we want Python 3.x’s integer division behavior in Python 2, we can import it via from __future__ import division
+Python 2’s print statement has been replaced by the print() function, meaning that we have to wrap the object that we want to print in parantheses.
+Python 2 doesn’t have a problem with additional parantheses, but in contrast, Python 3 would raise a SyntaxError if we called the print function the Python 2-way without the parentheses.
+Fortunately, the input() function was fixed in Python 3 so that it always stores the user inputs as str objects. In order to avoid the dangerous behavior in Python 2 to read in other types than strings, we have to use raw_input() instead.
+In Python 3, the range() was implemented like the xrange() function so that a dedicated xrange() function does not exist anymore (xrange() raises a NameError in Python 3).
+Some more commonly used functions and methods that don’t return lists anymore in Python 3:
+range()
+zip()
+map()
+filter()
+dictionary’s .keys() method
+dictionary’s .values() method
+dictionary’s .items() method
+in python 3.x:
+>>> a = {"test":1, "test2":2}
+>>> type(a.keys())
+<class 'dict_keys'>
+>>> type(a.values())
+<class 'dict_values'>
+>>> type(a.items())
+<class 'dict_items'>
+
+Shell
+->Tell fist five asteriks in crontab schedule,
+ min hours day_of_month month_of_the_year day_of_the_week  command
+ 
+->I have 1 tb of data, if file system size reaches 30gb clean the file system older than one year
+
+-->Wipro - python automation framework for mobile app - Healthcare app
+->Jython - Jython is an implementation of the Python programming language designed to run on the Java platform. It is the successor of JPython.
+
+->Create a calculator app using inheritance
+class Basic(object):
+    def add(self, a, b):
+        return a + b
+    def sub(self, a, b):
+        return a - b
+    def mul(self, a, b):
+        return a * b
+    def div(self, a, b):
+        return a / b
+class Scientific(Basic):
+    def power(self, a, toPower):
+        result = 1
+        for _ in range(toPower):
+            result = self.mul(result, a)
+        return result
+s = Scientific()
+print(s.add(5, 6))   # 11
+print(s.mul(6, 6))   # 36
+print(s.power(2, 4)) # 16
+
+->Static function in python, 
+instance method: an instance method knows its instance (and from that, its class)
+class method: a class method knows its class
+static method: a static method doesn't know its class or instance
+Inner working of instance method is the same as the class method. Actually, Python automatically maps an instance method call to a class method. For instance, a call like this: instance.method(args...) will be automatically converted to a class method function call like this: class.method(instance, args...)
+Method is just a function object created by def statement.
+Method works in exactly the same way as a simple function. But there is one exception: a method's first argument always receives the instance object:
+simple method : defined outside of a class. This function can access class attributes by feeding instance arg.
+def outside_foo():
+instance method : 
+def foo(self,)
+class method : if we need to use class attributes
+@classmethod
+def cfoo(cls,) 
+static method : do not have any info about the class
+@staticmethod
+def sfoo()
+Example:
+class Test(object):
+    @staticmethod
+    def staticMethod(x):
+        print x
+Test.staticMethod(2) # outputs 2
+Test().staticMethod(2) # outputs 2
+
+-> beautiful soup how i used: i used urllib2 library for getting html tops/operations/CME/produi/cmeDailyMail.py
+#! /usr/bin/python
+import requests
+from bs4 import BeautifulSoup as bs
+url = "http://www.nytimes.com"
+soup = bs(requests.get(url).text)
+for item in soup.find_all(class_= "story-heading"):
+    if item.a:
+        print item.a.text.replace("\n", "").strip()
+    else:
+        print item.contents[0].strip()
+
+->why we choose python for web programming than c
+Oftentimes the possibly faster execution speed of C++ doesn't matter since the bottleneck is the database and network I/O.
+So the benefits from ease / speed of development, safety (really sucks when your web app core dumps), and availability of frameworks will outweigh execution speed gains for many applications.
+One major reason that people don't seem to have mentioned is security. It's very easy to make memory management mistakes in C++, and on the web, this translates into security vulnerabilities.
+So unless CPU performance is critical to your application, it's best to stay with a memory-safe language. And that's what people do.
+
+->Difference between compiled vs interpreter
+Interpretation and compilation are properties of the implementation of a language
+It’s not accurate to say that a language is interpreted or compiled because interpretation and compilation are both properties of the implementation of that particular language, and not a property of the language itself. So, in theory, any language can be compiled or interpreted – it just depends on what the particular implementation that you are using does.
+What exactly is compilation?
+In a compiled implementation of a language, a compiler will translate the program directly into code that is specific to the target machine, which is also known as machine code – basically code that is specific to a given processor and operating system. Then the computer will run the machine code on its own.
+What exactly is interpretation?
+In an interpreted implementation of a language, the source code is not directly run by the target machine. What happens instead is that another program reads and then executes the original source code. This other program is also known as the interpreter. The interpreter is usually written specifically for the native machine.
+In interpretation, the original source code is also typically converted into some intermediate code which is then processed by an interpreter that converts the intermediate code into machine specific code.
+Compiled implementations of languages have the advantage of being faster because they translate directly to the native code of the specific machine.
+Interpreted implementations of languages tend to be more portable as well.
+Interpreted implementations of languages are generally easier to create because writing compilers is difficult.
+
+--UST Global
+round1
+->Optimizing .pyc, .pyd file
+.py: This is normally the input source code that you've written.
+.pyc: This is the compiled bytecode. If you import a module, python will build a *.pyc file that contains the bytecode to make importing it again later easier (and faster).The contents of the .pyc files are platform independent, so a Python module directory can be shared by machines of different architectures.
+.pyo: This is a *.pyc file that was created while optimizations (-O) was on.
+.pyd: This is basically a windows dll file. 
+When the Python interpreter is invoked with the -O flag, optimized code is generated and stored in ‘.pyo’ files. The optimizer currently doesn't help much; it only removes assert statements. When -O is used, all bytecode is optimized; .pyc files are ignored and .py files are compiled to optimized bytecode.
+Passing two -O flags to the Python interpreter (-OO) will cause the bytecode compiler to perform optimizations that could in some rare cases result in malfunctioning programs. Currently only __doc__ strings are removed from the bytecode, resulting in more compact ‘.pyo’ files. Since some programs may rely on having these available, you should only use this option if you know what you're doing.
+A program doesn't run any faster when it is read from a ‘.pyc’ or ‘.pyo’ file than when it is read from a ‘.py’ file; the only thing that's faster about ‘.pyc’ or ‘.pyo’ files is the speed with which they are loaded.
+The .pyc file is having byte code which is platform independent and can be executed on any operating system that supports .pyc format.
+Note: there is no difference in speed when program is read from .pyc or .py file; the only difference is the load time.
+
+->Convert json str to python dictionary
+json.dumps() converts a dictionary to str object,not a json(dict) object!so you have to load your str into a dict to use it by using json.loads() method!
+see json.dumps() a save method and json.loads() as a retrieve method!
+this is the code sample which might help you understand it more
+import json
+r = {'is_claimed': 'True', 'rating': 3.5}
+r = json.dumps(r)
+type(r) #Output str
+loaded_r = json.loads(r)
+loaded_r['rating'] #Output 3.5
+type(loaded_r) #Output dict
+Other way:
+>>> d  = {"name":"ravi", "age":30}
+>>> j = "%s" % (d)
+>>> j
+"{'age': 30, 'name': 'ravi'}"
+>>> type(j)
+<type 'str'>
+
+->When finally will be executed in below:
+try:
+except:
+else:
+finally:
+A finally clause is always executed before leaving the try statement, whether an exception has occurred or not. When an exception has occurred in the try clause and has not been handled by an except clause (or it has occurred in an except or else clause), it is re-raised after the finally clause has been executed. The finally clause is also executed “on the way out” when any other clause of the try statement is left via a break, continue or return statement.
+>>> def divide(x, y):
+...     try:
+...         result = x / y
+...     except ZeroDivisionError:
+...         print "division by zero!"
+...     else:
+...         print "result is", result
+...     finally:
+...         print "executing finally clause"
+...
+>>> divide(2, 1)
+result is 2
+executing finally clause
+>>> divide(2, 0)
+division by zero!
+executing finally clause
+>>> divide("2", "1")
+executing finally clause
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in divide
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+As you can see, the finally clause is executed in any event. The TypeError raised by dividing two strings is not handled by the except clause and therefore re-raised after the finally clause has been executed.
+In real world applications, the finally clause is useful for releasing external resources (such as files or network connections), regardless of whether the use of the resource was successful.
+The try ... except statement has an optional else clause, which, when present, must follow all except clauses. It is useful for code that must be executed if the try clause does not raise an exception. For example:
+for arg in ["test.txt"]:
+    try:
+        f = open(arg, 'r')
+    except IOError:
+        print 'cannot open', arg
+    else:
+        print arg, 'has', len(f.readlines()), 'lines'
+        f.close()
+output: test.txt has 5 lines
+
+->when else block will be excuted
+for:
+else:
+Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement. This is exemplified by the following loop, which searches for prime numbers:
+>>>
+>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print n, 'equals', x, '*', n/x
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print n, 'is a prime number'
+...
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+a try statement’s else clause runs when no exception occurs, and a loop’s else clause runs when no break occurs.
+for n in "":
+    print n
+else:
+    print "executing else"
+Output: executing else (Even nothing to loop over.. else clause excuted)
+
+->Output for below program: 
+def extend_me(n, new = [1, 2]):
+    for i in range(n):
+        new.extend([i])
+    return new
+print extend_me(2)              # [1, 2, 0, 1]
+print extend_me(3)              # [1, 2, 0, 1, 0, 1, 2]
+print extend_me(1, [1, 2, 3])   # [1, 2, 3, 0] # sending a list
+print extend_me(4)              # [1, 2, 0, 1, 0, 1, 2, 0, 1, 2, 3] # no list sent.. so, uses the default one which was created earlier
+print extend_me(5)              # [1, 2, 0, 1, 0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 4]
+
+->Difference between append and extend
+extend takes an iterable (such as a list, tuple or string), and adds each element of the iterable to the list one at a time, while append adds its argument to the end of the list as a single item. ... But list.append is more suitable when you're always adding a single item.
+append: Appends object at end.
+x = [1, 2, 3]
+x.append([4, 5])
+print (x)
+gives you: [1, 2, 3, [4, 5]]
+extend: Extends list by appending elements from the iterable.
+>> x = [1, 2, 3]
+>>> x.extend([4, 5])
+>>> x
+[1, 2, 3, 4, 5]
+>>> x.extend((47, 58)) # extend with a tuple
+>>> x
+[1, 2, 3, 4, 5, 47, 58]
+>>> x.extend("test") # extend with a string
+>>> x
+[1, 2, 3, 4, 5, 47, 58, 't', 'e', 's', 't']
+>>> 
+
+->When python program exited/completed all objects memory released  
+The algorithm used for garbage collecting is called Reference counting. That is the Python VM keeps an internal journal of how many references refer to an object, and automatically garbage collects it when there are no more references refering to it.      
+
+->HTTP HEAD, GET, PUT, POST, OPTIONS methods explain
+GET - Requests data from a specified resource, Note that the query string (name/value pairs) is sent in the URL of a GET request
+POST - Submits data to be processed to a specified resource, Note that the query string (name/value pairs) is sent in the HTTP message body of a POST request
+HEAD - Same as GET but returns only HTTP headers and no document body
+PUT	- Uploads a representation of the specified URI
+DELETE - Deletes the specified resource
+OPTIONS	- Returns the HTTP methods that the server supports
+CONNECT	- Converts the request connection to a transparent TCP/IP tunnel
+    
+->Raise ZeroDivisionError, IndexError, NameError, TypeError
+NameError:
+import sys
+try:
+    a = b
+except:
+    print sys.exc_info() # (<type 'exceptions.NameError'>, NameError("name 'b' is not defined",), <traceback object at 0x026F1AA8>)
+TypeError:
+import sys
+try:
+    a = "test" + 2
+except:
+    print sys.exc_info() # (<type 'exceptions.TypeError'>, TypeError("cannot concatenate 'str' and 'int' objects",), <traceback object at 0x028E1AA8>)
+IndexError:
+import sys
+try:
+    l = []
+    a = l[0]
+except:
+    print sys.exc_info() # (<type 'exceptions.IndexError'>, IndexError('list index out of range',), <traceback object at 0x02851AD0>)
+ValueError:
+import sys
+try:
+    a = float("5.0a");
+except:
+    print sys.exc_info()  # (<type 'exceptions.ValueError'>, ValueError('invalid literal for float(): 5.0a',), <traceback object at 0x02771AA8>)  
+Custom msg print on exception:
+import sys
+try:
+    a = float("5.0a");
+except:
+    raise Exception("Invalid data") 
+output:
+Traceback (most recent call last):
+  File "C:\ravi\code\python\test.py", line 14, in <module>
+    raise Exception("Invalid data")
+Exception: Invalid data
+custom msg print on exceptions.<error>:
+import sys, exceptions
+try:
+    a = float("5.0a");
+except ValueError as e:
+    raise exceptions.ValueError("Invalid number conversion")
+Output:
+Traceback (most recent call last):
+  File "C:\ravi\code\python\test.py", line 14, in <module>
+    raise exceptions.ValueError("Invalid number conversion")
+ValueError: Invalid number conversion
+    
+->what are web services
+A Web service is a service offered by an electronic device to another electronic device, communicating with each other via the World Wide Web. In a Web service, Web technology such as HTTP, originally designed for human-to-machine communication, is utilized for machine-to-machine communication, more specifically for transferring machine readable file formats such as XML and JSON
+Web services (sometimes called application services) are services (usually including some combination of programming and data, but possibly including human resources as well) that are made available from a business's Web server for Web users or other Web-connected programs. Providers of Web services are generally known as application service providers.
+The term Web services describes a standardized way of integrating Web-based applications using the XML, SOAP, WSDL and UDDI open standards over an Internet protocol backbone. XML is used to tag the data, SOAP is used to transfer the data, WSDL is used for describing the services available and UDDI is used for listing what services are available. Used primarily as a means for businesses to communicate with each other and with clients, Web services allow organizations to communicate data without intimate knowledge of each other's IT systems behind the firewall.
+
+->how will you lock a thread
+threading.Lock()
+A factory function that returns a new primitive lock object. Once a thread has acquired it, subsequent attempts to acquire it block, until it is released; any thread may release it.
+A primitive lock is in one of two states, “locked” or “unlocked”. It is created in the unlocked state. It has two basic methods, acquire() and release(). When the state is unlocked, acquire() changes the state to locked and returns immediately. When the state is locked, acquire() blocks until a call to release() in another thread changes it to unlocked, then the acquire() call resets it to locked and returns. The release() method should only be called in the locked state; it changes the state to unlocked and returns immediately. If an attempt is made to release an unlocked lock, a ThreadError will be raised.
+Lock.acquire([blocking])
+Acquire a lock, blocking or non-blocking.
+When invoked with the blocking argument set to True (the default), block until the lock is unlocked, then set it to locked and return True.
+When invoked with the blocking argument set to False, do not block. If a call with blocking set to True would block, return False immediately; otherwise, set the lock to locked and return True.
+Lock.release()
+Release a lock.When the lock is locked, reset it to unlocked, and return. If any other threads are blocked waiting for the lock to become unlocked, allow exactly one of them to proceed.When invoked on an unlocked lock, a ThreadError is raised.There is no return value.
+
+round2
+->What is black box and white box testing
+In BlackBox Testing we just focus on inputs and output of the software system without bothering about internal knowledge of the software program.
+White Box Testing is the testing of a software solution's internal coding and infrastructure. It focuses primarily on strengthening security, the flow of inputs and outputs through the application, and improving design and usability.
+
+->What is difference between windows and linux
+Dir path seperator: windows: \, linux : /
+Line endings: windows: \r\n, linux: \n
+
+->What is difference between windows 7 and windows 10
+Below are not available in windows 7
+searching the web from your desktop in windows 10
+cortana - issue voice commands in windows 10
+
+->Explain about Functional Testing, BAT Testing, Sanity Testing, Regression testing
+Functional testing is a type of testing which verifies that each function of the software application operates in conformance with the requirement specification. This testing mainly involves black box testing and it is not concerned about the source code of the application.
+Sanity testing is a kind of Software Testing performed after receiving a software build, with minor changes in code, or functionality, to ascertain that the bugs have been fixed and no further issues are introduced due to these changes. The goal is to determine that the proposed functionality works roughly as expected. If sanity test fails, the build is rejected to save the time and costs involved in a more rigorous testing.
+Regression testing is done after code fixes, upgrades or any other system maintenance to check the new code has not affected the existing code.
+
+->SDLC - Software Development Life cycle
+->bug tracking life cycle
+status: To do, InProgress, Open, Closed, ReOpened, and Resolved
+Resolution: Fixed, Won't fix, Duplicate, Incomplete, Cannot reproduce, Done
+Priority: critical, major, minor, blocker and Trivial
+
+->Write an example for re and explain all things about re. Diff between re.search, re.match, re.findall, what they returns
+>>> re.match("c", "abcdef")    # No match
+>>> re.search("c", "abcdef")   # Match
+<_sre.SRE_Match object at ...>
+re.search(pattern, string, flags=0)
+Scan through string looking for the first location where the regular expression pattern produces a match, and return a corresponding MatchObject instance. Return None if no position in the string matches the pattern;
+re.match(pattern, string, flags=0)
+If zero or more characters at the beginning of string match the regular expression pattern, return a corresponding MatchObject instance. Return None if the string does not match the pattern; 
+re.findall(pattern, string, flags=0)
+Return all non-overlapping matches of pattern in string, as a list of strings. The string is scanned left-to-right, and matches are returned in the order found. If one or more groups are present in the pattern, return a list of groups; this will be a list of tuples if the pattern has more than one group. Empty matches are included in the result unless they touch the beginning of another match.
+
+round3
+-> List pop, remove & del
+>>> a = [0, 2, 1, 3]
+>>> a.remove(2) # Yes, remove removes the first matching value, not a specific index:
+>>> a
+[0, 1, 3]
+>>> a = [3, 2, 0, 1]
+>>> del a[1] # del removes a specific index:
+[3, 0, 1]
+>>> a = [4, 3, 5]
+>>> a.pop(1) # pop returns the removed element:
+3
+>>> a
+[4, 5]
+>>> a.pop() # In default pop returns last element
+5
+>>> a
+[4]
+>>> 
+
+-> I have string "My mobile number is 9916965473 & address 33, ground floor, first cross, NMR Layout, udaya nagar, bangalore".Using re module return only mobile number and address
+import re
+s = "My mobile number is 9916965473 and address 33, ground floor, first cross, NMR Layout, udaya nagar, bangalore"
+# using re.search
+print re.search(r"[0-9]{10}", s).group() # 9916965473
+print re.search(r"(?<=address ).*", s).group() # 33, ground floor, first cross, NMR Layout, udaya nagar, bangalore # Matches if the current position in the string is preceded by a # # match for ... that ends at the current position. This is called a positive lookbehind assertion. (?<=abc)def will find a match in abcdef
+# using find all
+print re.findall(r"[0-9]{10}", s) # ['9916965473']
+print re.findall(r"(?<=address ).*", s) # ['33, ground floor, first cross, NMR Layout, udaya nagar, bangalore']
+
+-> Difference between os.system and subprocess
+os.system - the return value is the exit status of the process
+subprocess module provides more powerful facilities for spawning new processes and retrieving their results
+subprocess call - wait for command to complete, then return the returncode attribute.
+Examples:
+>>> subprocess.call(["ls", "-l"])
+0
+>>> subprocess.call("exit 1", shell=True)
+1
+
+--Wipro - cisco ODC
+->s = "My ip address is : 10.12.128.23", retrieve only the particular address using re, also using str.find
+Method/Attribute	Purpose
+match(): Determine if the RE matches at the beginning of the string. # Returns matched object, obj.group() - full match, obj.groups() - list captured in group
+search(): Scan through a string, looking for any location where this RE matches. # Returns matched object, obj.group()-full match, obj.groups()-list captured in group
+findall(): Find all substrings where the RE matches, and returns them as a list. # returns list of values
+import re
+s = "My ip address is: 10.12.128.11"
+m = re.search(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", s) # <_sre.SRE_Match object at 0x000000000245D578>
+print m.group() # 10.12.128.11
+print m.groups() # ()
+print s[m.start():m.end()+1] # 10.12.128.11
+print re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", s) # ['10.12.128.11']
+
+->how wil you check for alphanumeric string - "str".isalnum()
+
+-> set, frozenset, Is it safe to use frozen set as Dict key?hash
+A set object is an unordered collection of distinct hashable objects. Common uses include membership testing, removing duplicates from a sequence, and computing mathematical operations such as intersection, union, difference, and symmetric difference. (For other containers see the built in dict, list, and tuple classes, and the collections module.)
+New in version 2.4.
+Like other collections, sets support x in set, len(set), and for x in set. Being an unordered collection, sets do not record element position or order of insertion. Accordingly, sets do not support indexing, slicing, or other sequence-like behavior.
+There are currently two built-in set types, set and frozenset. The set type is mutable — the contents can be changed using methods like add() and remove(). Since it is mutable, it has no hash value and cannot be used as either a dictionary key or as an element of another set. The frozenset type is immutable and hashable — its contents cannot be altered after it is created; it can therefore be used as a dictionary key or as an element of another set.
+frozenset hashing algorithm doesn't depend on the order of the elements, only on elements themselves. Two FS'es with the same elements are equal and have equal hashes, thus satisfying both criteria for "dict identity", in other words, they are the same dict key, frozen set better not to keep as dict key:
+>>> a = frozenset([1,1,1,1,2,3])
+>>> b = frozenset([3,3,3,3,2,1])
+>>> {a:1, b:2}
+{frozenset([1, 2, 3]): 2} # eventually it is only one key
+>>> hash([1, 2, 3])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> hash({1, 2, 3})
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'set'
+>>> hash(frozenset({1, 2, 3}))
+-7699079583225461316
+>>> hash(2)
+2
+>>> hash("test")
+2314058222102390712
+
+->local, global variable
+It is not possible to change the value of a global variable without explicitly specifying it. global variables can be read without specifying as global
+def foo():
+    total += 1
+    return total
+total = 0
+print(foo())
+output:
+Traceback (most recent call last):
+  File "C:\ravi\code\python\test.py", line 26, in <module>
+    print(foo())
+  File "C:\ravi\code\python\test.py", line 23, in foo
+    total += 1
+UnboundLocalError: local variable 'total' referenced before assignment
+
+->set also works on removing duplicate strings and it is not ordered
+l = ["hai", "hai", 1, 2, 1]
+print set(l)
+
+-->micro land
+->FIX - Financial Information eXchange protocol
+
+->Passing args thro command line with python scripts - getopt
+    opts, args = getopt.getopt(sys.argv[1:], "hb:")
+
+-> object oriented concepts in python - Abstraction, Polymorphism, Encapsulation, Inheritance
+Object-oriented programming (OOP) is a programming paradigm that uses objects and their interactions to design applications and computer programs.
+There are some basic programming concepts in OOP:
+Abstraction
+Polymorphism
+Encapsulation
+Inheritance
+The abstraction is simplifying complex reality by modeling classes appropriate to the problem. The polymorphism is the process of using an operator or function in different ways for different data input. The encapsulation hides the implementation details of a class from other objects. The inheritance is a way to form new classes using classes that have already been defined.
+The terms encapsulation and abstraction (also data hiding) are often used as synonyms
+encapsulation is the mechanism for restricting the access to some of an object's components, this means that the internal representation of an object can't be seen from outside of the objects definition. Access to this data is typically only achieved through special methods: Getters and Setters. By using solely get() and set() methods, we can make sure that the internal data cannot be accidentally set into an inconsistent or invalid state. Encapsulation is done in python by name mangling
+Abstract Base Classes are classes that are only meant to be inherited from; you can't create instance of an ABC
+So how do we make a class an ABC? Simple! The abc module contains a metaclass called ABCMeta (metaclasses are a bit outside the scope of this article). Setting a class's metaclass to ABCMeta and making one of its methods virtual makes it an ABC. A virtual method is one that the ABC says must exist in child classes, but doesn't necessarily actually implement.
+from abc import ABCMeta, abstractmethod
+class Vehicle(object):
+    __metaclass__ = ABCMeta
+    @abstractmethod
+    def vehicle_type():
+        """"Return a string representing the type of vehicle this is."""
+        pass
+Interface in python: In Python, there is none! An abstract class defines an interface.
+class Abstract1( object ):
+    """Some description that tells you it's abstract,
+    often listing the methods you're expected to supply."""
+    def aMethod( self ):
+        raise NotImplementedError( "Should have implemented this" )
+Because Python doesn't have (and doesn't need) a formal Interface contract, the Java-style distinction between abstraction and interface doesn't exist. If someone goes through the effort to define a formal interface, it will also be an abstract class.
+
+-- TCS Tech interview
+-> List and dict difference
+list-collection of ordered elements
+dict-collection of unordered key-value pairs
+
+->what is subprocess.Popen returns, what communicate function will return?
+subprocess.Popen() returns subprocess.Popen object and communicate function returns a (out, err) tuple
+
+->Why we need json
+The JSON format is often used for serializing and transmitting structured data over a network connection. It is used primarily to transmit data between a server and web application, serving as an alternative to XML.
+Adv:
+it is language-independent, with parsers available for most programming languages.
+Since the JSON format is text only, it can easily be sent to and from a server, and used as a data format by any programming language.
+JavaScript has a built in function to convert a string, written in JSON format, into native JavaScript objects:
+JSON.parse()
+JSON – stands for JavaScript Object Notation. It is a popular data format for storing data in NoSQL databases. Generally JSON is built on 2 structures.
+1. A collection of <name, value> pairs.
+2. An ordered list of values.
+As Python supports JSON parsers, JSON-based data is actually represented as a dictionary in Python. You can convert json data into python using loads() of json module.
+JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate.
+Reason choosing JSON over xml:
+JSON is more compact than XML and will consume less bandwidth. It is also easier to manipulate with javascript because you are working directly with objects while XML needs to be parsed.
+
+->what is the difference between list and dict
+A list can store a sequence of objects in a certain order such that you can index into the list, or iterate over the list. List is a mutable type meaning that lists can be modified after they have been created.
+A dictionary is a key-value store. It is not ordered and it requires that the keys are hashable. It is fast for lookups by key.
+
+--big basket
+->Given list of elements, get only unique elements without changing order.with o(n)
+o(n^2)soln:
+lst = [10, 10, 20, 50, 50, 30, 100, 40, 20]
+res = []
+for el in lst:
+    if el not in res:
+        res.append(el)
+print res
+o(n) soln:
+lst = [10, 10, 20, 50, 50, 30, 100, 40, 20]
+from collections import OrderedDict
+od = OrderedDict()
+for el in lst:
+    if od.has_key(el):
+        continue
+    else:
+        od[el] = 1
+print od.keys()
+->Given a set of list and x ..Return two numbers if adding them gives x otherwise return None, None..give me a solution with O(n)..
+o(n^2) soln:
+lst = [10, 20, 50, 30, 100, 40, 20]
+x = 40
+def find_nos(lst, x):
+    for i in range(len(lst)):
+        for j in range(i+1, len(lst)):
+            if lst[i] + lst[j] == x:
+                return lst[i], lst[j]
+    return None, None
+print find_nos(lst, x)
+o(n^2) soln:
+lst = [10, 20, 50, 30, 100, 40, 20]
+x = 170
+def find_nos(lst, x):
+    for i in lst:
+        if x - i in lst:
+            return i, x-i
+    return None, None      
+print find_nos(lst, x)
+o(n) soln:
+lst = [10, 20, 50, 30, 100, 40, 20]
+x = 70
+a = set()
+def find_nos(lst, x):
+    for i in lst:
+        if x - i in a:
+            return i, x-i
+        else:
+            a.add(i)
+    return None, None      
+print find_nos(lst, x)
+Python set required elements to be hashable. It is needed because internal implementation is using dictionary. So looking for an element in a set is equivalent to look for an element in a hash table. And this is really faster than searching in a list where there is no real magic possible.
+->Give two different length of stick: 5, 1 & target t-> input is no of sticks of 1 (x) & 5 (y).. Return true if target is achieved using no of 5 & 1 unit sticks available otherwise false
+def target(x, y, t):
+    if t/5 <= y :
+        if t % 5 <= x:
+            return True
+    else:
+        t = t - (y * 5)
+        if t <= x:
+            return True
+    return False
+print target(5, 7, 50)
+
+athena health
+-> Given an array that represents elements of geometric progression in order. One element is missing in the progression, find the missing number. It may be assumed that one term is always missing and the missing term is not first or last of series
+
+synophic systems
+1) When to use tuples
+Tuples are faster than lists. If you're defining a constant set of values and all you're ever going to do with it is iterate through it, use a tuple instead of a list.
+It makes your code safer if you “write-protect” data that does not need to be changed. Using a tuple instead of a list is like having an implied assert statement that this data is constant
+2)Can puppet programs written in python
+3)git reset -hard - usage
+--soft
+Does not touch the index file or the working tree at all (but resets the head to <commit>, just like all modes do). This leaves all your changed files "Changes to be committed", as git status would put it.
+--hard
+Resets the index and working tree. Any changes to tracked files in the working tree since <commit> are discarded.
+
+HCL-Python
+->Check for prime number or not
+import math
+def is_prime(n):
+    val = int(math.sqrt(n))
+    for i in range(2, val+1):
+        if n % i == 0:
+            return False
+    return True
+n = 22
+if is_prime(n):
+    print "Given number %d is prime" % (n) 
+else:
+    print "%d is not prime" % (n) # 22 is not prime
+->First 15 fibonacci series (but write in general)
+def fibnacci(n):
+    fib = [1, 1]
+    if n == 1:
+        print fib[0]
+        return
+    for i in range(2, n):
+        fib.append(fib[i-1]+fib[i-2])
+    print fib
+fibnacci(15) # [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+
+ITC
+1) How will you create custom field in JIRA
+2) In a build pipeline if there is a job failed in between, how will you recover the build?
+
+Harman
+1)Threading works in python as similar in other languages?
