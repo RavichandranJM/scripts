@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+
+# -*- coding: utf-8 -*-
+
 import requests
 from bs4 import BeautifulSoup
-
+ 
 def print_to_text(base_url):
     """
     :param base_url: URL of article to scrape
@@ -10,8 +14,8 @@ def print_to_text(base_url):
     soup = BeautifulSoup(r.text)
     with open("work less.txt", "w") as textfile:
         for paragraph in soup.find_all(dir="ltr"):
-            textfile.write(paragraph.text.replace("<span>",""))
-
+            textfile.write(paragraph.text.encode('utf-8').replace("<span>",""))
+ 
 if __name__ == "__main__":
     #Chose my own article
     base_url = "http://www.theatlantic.com/business/archive/2014/08/to-work-better-work-less/375763/"
