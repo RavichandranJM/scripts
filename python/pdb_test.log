@@ -1,0 +1,392 @@
+ --- modulename: pdb_test, funcname: <module>
+pdb_test.py(2): import pdb
+ --- modulename: pdb, funcname: <module>
+pdb.py(3): """A Python debugger."""
+pdb.py(7): import sys
+pdb.py(8): import linecache
+pdb.py(9): import cmd
+ --- modulename: cmd, funcname: <module>
+cmd.py(46): """
+cmd.py(48): import string
+cmd.py(50): __all__ = ["Cmd"]
+cmd.py(52): PROMPT = '(Cmd) '
+cmd.py(53): IDENTCHARS = string.ascii_letters + string.digits + '_'
+cmd.py(55): class Cmd:
+ --- modulename: cmd, funcname: Cmd
+cmd.py(55): class Cmd:
+cmd.py(66):     """
+cmd.py(67):     prompt = PROMPT
+cmd.py(68):     identchars = IDENTCHARS
+cmd.py(69):     ruler = '='
+cmd.py(70):     lastcmd = ''
+cmd.py(71):     intro = None
+cmd.py(72):     doc_leader = ""
+cmd.py(73):     doc_header = "Documented commands (type help <topic>):"
+cmd.py(74):     misc_header = "Miscellaneous help topics:"
+cmd.py(75):     undoc_header = "Undocumented commands:"
+cmd.py(76):     nohelp = "*** No help on %s"
+cmd.py(77):     use_rawinput = 1
+cmd.py(79):     def __init__(self, completekey='tab', stdin=None, stdout=None):
+cmd.py(102):     def cmdloop(self, intro=None):
+cmd.py(154):     def precmd(self, line):
+cmd.py(161):     def postcmd(self, stop, line):
+cmd.py(165):     def preloop(self):
+cmd.py(169):     def postloop(self):
+cmd.py(176):     def parseline(self, line):
+cmd.py(196):     def onecmd(self, line):
+cmd.py(223):     def emptyline(self):
+cmd.py(233):     def default(self, line):
+cmd.py(242):     def completedefault(self, *ignored):
+cmd.py(251):     def completenames(self, text, *ignored):
+cmd.py(255):     def complete(self, text, state):
+cmd.py(285):     def get_names(self):
+cmd.py(290):     def complete_help(self, *args):
+cmd.py(296):     def do_help(self, arg):
+cmd.py(342):     def print_topics(self, header, cmds, cmdlen, maxcol):
+cmd.py(350):     def columnize(self, list, displaywidth=80):
+pdb.py(10): import bdb
+ --- modulename: bdb, funcname: <module>
+bdb.py(1): """Debugger basics"""
+bdb.py(3): import fnmatch
+ --- modulename: fnmatch, funcname: <module>
+fnmatch.py(11): """
+fnmatch.py(13): import re
+fnmatch.py(15): __all__ = ["filter", "fnmatch", "fnmatchcase", "translate"]
+fnmatch.py(17): _cache = {}
+fnmatch.py(18): _MAXCACHE = 100
+fnmatch.py(20): def _purge():
+fnmatch.py(24): def fnmatch(name, pat):
+fnmatch.py(45): def filter(names, pat):
+fnmatch.py(67): def fnmatchcase(name, pat):
+fnmatch.py(81): def translate(pat):
+bdb.py(4): import sys
+bdb.py(5): import os
+bdb.py(6): import types
+bdb.py(8): __all__ = ["BdbQuit","Bdb","Breakpoint"]
+bdb.py(10): class BdbQuit(Exception):
+ --- modulename: bdb, funcname: BdbQuit
+bdb.py(10): class BdbQuit(Exception):
+bdb.py(11):     """Exception to give up completely"""
+bdb.py(14): class Bdb:
+ --- modulename: bdb, funcname: Bdb
+bdb.py(14): class Bdb:
+bdb.py(21):     """
+bdb.py(23):     def __init__(self, skip=None):
+bdb.py(29):     def canonic(self, filename):
+bdb.py(39):     def reset(self):
+bdb.py(45):     def trace_dispatch(self, frame, event, arg):
+bdb.py(65):     def dispatch_line(self, frame):
+bdb.py(71):     def dispatch_call(self, frame, arg):
+bdb.py(84):     def dispatch_return(self, frame, arg):
+bdb.py(94):     def dispatch_exception(self, frame, arg):
+bdb.py(104):     def is_skipped_module(self, module_name):
+bdb.py(110):     def stop_here(self, frame):
+bdb.py(126):     def break_here(self, frame):
+bdb.py(148):     def do_clear(self, arg):
+bdb.py(151):     def break_anywhere(self, frame):
+bdb.py(157):     def user_call(self, frame, argument_list):
+bdb.py(162):     def user_line(self, frame):
+bdb.py(166):     def user_return(self, frame, return_value):
+bdb.py(170):     def user_exception(self, frame, exc_info):
+bdb.py(176):     def _set_stopinfo(self, stopframe, returnframe, stoplineno=0):
+bdb.py(187):     def set_until(self, frame): #the name "until" is borrowed from gdb
+bdb.py(192):     def set_step(self):
+bdb.py(204):     def set_next(self, frame):
+bdb.py(208):     def set_return(self, frame):
+bdb.py(212):     def set_trace(self, frame=None):
+bdb.py(227):     def set_continue(self):
+bdb.py(238):     def set_quit(self):
+bdb.py(251):     def set_break(self, filename, lineno, temporary=0, cond = None,
+bdb.py(252):                   funcname=None):
+bdb.py(266):     def _prune_breaks(self, filename, lineno):
+bdb.py(272):     def clear_break(self, filename, lineno):
+bdb.py(285):     def clear_bpbynumber(self, arg):
+bdb.py(299):     def clear_all_file_breaks(self, filename):
+bdb.py(309):     def clear_all_breaks(self):
+bdb.py(317):     def get_break(self, filename, lineno):
+bdb.py(322):     def get_breaks(self, filename, lineno):
+bdb.py(328):     def get_file_breaks(self, filename):
+bdb.py(335):     def get_all_breaks(self):
+bdb.py(341):     def get_stack(self, f, t):
+bdb.py(361):     def format_stack_entry(self, frame_lineno, lprefix=': '):
+bdb.py(389):     def run(self, cmd, globals=None, locals=None):
+bdb.py(407):     def runeval(self, expr, globals=None, locals=None):
+bdb.py(425):     def runctx(self, cmd, globals, locals):
+bdb.py(431):     def runcall(self, func, *args, **kwds):
+bdb.py(445): def set_trace():
+bdb.py(449): class Breakpoint:
+ --- modulename: bdb, funcname: Breakpoint
+bdb.py(449): class Breakpoint:
+bdb.py(462):     """
+bdb.py(467):     next = 1        # Next bp to be assigned
+bdb.py(468):     bplist = {}     # indexed by (file, lineno) tuple
+bdb.py(469):     bpbynumber = [None] # Each entry is None or an instance of Bpt
+bdb.py(473):     def __init__(self, file, line, temporary=0, cond=None, funcname=None):
+bdb.py(494):     def deleteMe(self):
+bdb.py(502):     def enable(self):
+bdb.py(505):     def disable(self):
+bdb.py(508):     def bpprint(self, out=None):
+bdb.py(533): def checkfuncname(b, frame):
+bdb.py(561): def effective(file, line, frame):
+bdb.py(614): class Tdb(Bdb):
+ --- modulename: bdb, funcname: Tdb
+bdb.py(614): class Tdb(Bdb):
+bdb.py(615):     def user_call(self, frame, args):
+bdb.py(619):     def user_line(self, frame):
+bdb.py(626):     def user_return(self, frame, retval):
+bdb.py(628):     def user_exception(self, frame, exc_stuff):
+bdb.py(632): def foo(n):
+bdb.py(637): def bar(a):
+bdb.py(641): def test():
+pdb.py(11): from repr import Repr
+ --- modulename: repr, funcname: <module>
+repr.py(1): """Redo the builtin repr() (representation) but with limits on most sizes."""
+repr.py(3): __all__ = ["Repr","repr"]
+repr.py(5): import __builtin__
+repr.py(6): from itertools import islice
+repr.py(8): class Repr:
+ --- modulename: repr, funcname: Repr
+repr.py(8): class Repr:
+repr.py(10):     def __init__(self):
+repr.py(23):     def repr(self, x):
+repr.py(26):     def repr1(self, x, level):
+repr.py(41):     def _repr_iterable(self, x, level, left, right, maxiter, trail=''):
+repr.py(54):     def repr_tuple(self, x, level):
+repr.py(57):     def repr_list(self, x, level):
+repr.py(60):     def repr_array(self, x, level):
+repr.py(64):     def repr_set(self, x, level):
+repr.py(68):     def repr_frozenset(self, x, level):
+repr.py(73):     def repr_deque(self, x, level):
+repr.py(76):     def repr_dict(self, x, level):
+repr.py(91):     def repr_str(self, x, level):
+repr.py(100):     def repr_long(self, x, level):
+repr.py(108):     def repr_instance(self, x, level):
+repr.py(122): def _possibly_sorted(x):
+repr.py(131): aRepr = Repr()
+ --- modulename: repr, funcname: __init__
+repr.py(11):         self.maxlevel = 6
+repr.py(12):         self.maxtuple = 6
+repr.py(13):         self.maxlist = 6
+repr.py(14):         self.maxarray = 5
+repr.py(15):         self.maxdict = 4
+repr.py(16):         self.maxset = 6
+repr.py(17):         self.maxfrozenset = 6
+repr.py(18):         self.maxdeque = 6
+repr.py(19):         self.maxstring = 30
+repr.py(20):         self.maxlong = 40
+repr.py(21):         self.maxother = 20
+repr.py(132): repr = aRepr.repr
+pdb.py(12): import os
+pdb.py(13): import re
+pdb.py(14): import pprint
+ --- modulename: pprint, funcname: <module>
+pprint.py(35): """
+pprint.py(37): import sys as _sys
+pprint.py(38): import warnings
+pprint.py(40): try:
+pprint.py(41):     from cStringIO import StringIO as _StringIO
+pprint.py(45): __all__ = ["pprint","pformat","isreadable","isrecursive","saferepr",
+pprint.py(46):            "PrettyPrinter"]
+pprint.py(49): _commajoin = ", ".join
+pprint.py(50): _id = id
+pprint.py(51): _len = len
+pprint.py(52): _type = type
+pprint.py(55): def pprint(object, stream=None, indent=1, width=80, depth=None):
+pprint.py(61): def pformat(object, indent=1, width=80, depth=None):
+pprint.py(65): def saferepr(object):
+pprint.py(69): def isreadable(object):
+pprint.py(73): def isrecursive(object):
+pprint.py(77): def _sorted(iterable):
+pprint.py(84): class PrettyPrinter:
+ --- modulename: pprint, funcname: PrettyPrinter
+pprint.py(84): class PrettyPrinter:
+pprint.py(85):     def __init__(self, indent=1, width=80, depth=None, stream=None):
+pprint.py(116):     def pprint(self, object):
+pprint.py(120):     def pformat(self, object):
+pprint.py(125):     def isrecursive(self, object):
+pprint.py(128):     def isreadable(self, object):
+pprint.py(132):     def _format(self, object, stream, indent, allowance, context, level):
+pprint.py(224):     def _repr(self, object, context, level):
+pprint.py(233):     def format(self, object, context, maxlevels, level):
+pprint.py(243): def _safe_repr(object, context, maxlevels, level):
+pprint.py(327): def _recursion(object):
+pprint.py(332): def _perfcheck(object=None):
+pprint.py(345): if __name__ == "__main__":
+pdb.py(15): import traceback
+pdb.py(18): class Restart(Exception):
+ --- modulename: pdb, funcname: Restart
+pdb.py(18): class Restart(Exception):
+pdb.py(19):     """Causes a debugger to be restarted for the debugged python program."""
+pdb.py(20):     pass
+pdb.py(24): _repr = Repr()
+ --- modulename: repr, funcname: __init__
+repr.py(11):         self.maxlevel = 6
+repr.py(12):         self.maxtuple = 6
+repr.py(13):         self.maxlist = 6
+repr.py(14):         self.maxarray = 5
+repr.py(15):         self.maxdict = 4
+repr.py(16):         self.maxset = 6
+repr.py(17):         self.maxfrozenset = 6
+repr.py(18):         self.maxdeque = 6
+repr.py(19):         self.maxstring = 30
+repr.py(20):         self.maxlong = 40
+repr.py(21):         self.maxother = 20
+pdb.py(25): _repr.maxstring = 200
+pdb.py(26): _saferepr = _repr.repr
+pdb.py(28): __all__ = ["run", "pm", "Pdb", "runeval", "runctx", "runcall", "set_trace",
+pdb.py(29):            "post_mortem", "help"]
+pdb.py(31): def find_function(funcname, filename):
+pdb.py(57): line_prefix = '\n-> '   # Probably a better default
+pdb.py(59): class Pdb(bdb.Bdb, cmd.Cmd):
+ --- modulename: pdb, funcname: Pdb
+pdb.py(59): class Pdb(bdb.Bdb, cmd.Cmd):
+pdb.py(61):     def __init__(self, completekey='tab', stdin=None, stdout=None, skip=None):
+pdb.py(107):     def reset(self):
+pdb.py(111):     def forget(self):
+pdb.py(117):     def setup(self, f, t):
+pdb.py(128):     def execRcLines(self):
+pdb.py(141):     def user_call(self, frame, argument_list):
+pdb.py(150):     def user_line(self, frame):
+pdb.py(160):     def bp_commands(self,frame):
+pdb.py(184):     def user_return(self, frame, return_value):
+pdb.py(192):     def user_exception(self, frame, exc_info):
+pdb.py(207):     def interaction(self, frame, traceback):
+pdb.py(213):     def displayhook(self, obj):
+pdb.py(221):     def default(self, line):
+pdb.py(246):     def precmd(self, line):
+pdb.py(271):     def onecmd(self, line):
+pdb.py(283):     def handle_command_def(self,line):
+pdb.py(315):     do_h = cmd.Cmd.do_help
+pdb.py(317):     def do_commands(self, arg):
+pdb.py(344):     def do_break(self, arg, temporary = 0):
+pdb.py(427):     def defaultFile(self):
+pdb.py(434):     do_b = do_break
+pdb.py(436):     def do_tbreak(self, arg):
+pdb.py(439):     def lineinfo(self, identifier):
+pdb.py(472):     def checkline(self, filename, lineno):
+pdb.py(493):     def do_enable(self, arg):
+pdb.py(510):     def do_disable(self, arg):
+pdb.py(527):     def do_condition(self, arg):
+pdb.py(552):     def do_ignore(self,arg):
+pdb.py(584):     def do_clear(self, arg):
+pdb.py(627):     do_cl = do_clear # 'c' is already an abbreviation for 'continue'
+pdb.py(629):     def do_where(self, arg):
+pdb.py(631):     do_w = do_where
+pdb.py(632):     do_bt = do_where
+pdb.py(634):     def do_up(self, arg):
+pdb.py(643):     do_u = do_up
+pdb.py(645):     def do_down(self, arg):
+pdb.py(654):     do_d = do_down
+pdb.py(656):     def do_until(self, arg):
+pdb.py(659):     do_unt = do_until
+pdb.py(661):     def do_step(self, arg):
+pdb.py(664):     do_s = do_step
+pdb.py(666):     def do_next(self, arg):
+pdb.py(669):     do_n = do_next
+pdb.py(671):     def do_run(self, arg):
+pdb.py(681):     do_restart = do_run
+pdb.py(683):     def do_return(self, arg):
+pdb.py(686):     do_r = do_return
+pdb.py(688):     def do_continue(self, arg):
+pdb.py(691):     do_c = do_cont = do_continue
+pdb.py(693):     def do_jump(self, arg):
+pdb.py(710):     do_j = do_jump
+pdb.py(712):     def do_debug(self, arg):
+pdb.py(724):     def do_quit(self, arg):
+pdb.py(729):     do_q = do_quit
+pdb.py(730):     do_exit = do_quit
+pdb.py(732):     def do_EOF(self, arg):
+pdb.py(738):     def do_args(self, arg):
+pdb.py(749):     do_a = do_args
+pdb.py(751):     def do_retval(self, arg):
+pdb.py(756):     do_rv = do_retval
+pdb.py(758):     def _getval(self, arg):
+pdb.py(770):     def do_p(self, arg):
+pdb.py(776):     def do_pp(self, arg):
+pdb.py(782):     def do_list(self, arg):
+pdb.py(826):     do_l = do_list
+pdb.py(828):     def do_whatis(self, arg):
+pdb.py(855):     def do_alias(self, arg):
+pdb.py(868):     def do_unalias(self, arg):
+pdb.py(875):     commands_resuming = ['do_continue', 'do_step', 'do_next', 'do_return',
+pdb.py(876):                          'do_quit', 'do_jump']
+pdb.py(886):     def print_stack_trace(self):
+pdb.py(893):     def print_stack_entry(self, frame_lineno, prompt_prefix=line_prefix):
+pdb.py(905):     def help_help(self):
+pdb.py(908):     def help_h(self):
+pdb.py(915):     def help_where(self):
+pdb.py(918):     def help_w(self):
+pdb.py(924):     help_bt = help_w
+pdb.py(926):     def help_down(self):
+pdb.py(929):     def help_d(self):
+pdb.py(934):     def help_up(self):
+pdb.py(937):     def help_u(self):
+pdb.py(942):     def help_break(self):
+pdb.py(945):     def help_b(self):
+pdb.py(958):     def help_clear(self):
+pdb.py(961):     def help_cl(self):
+pdb.py(974):     def help_tbreak(self):
+pdb.py(978):     def help_enable(self):
+pdb.py(983):     def help_disable(self):
+pdb.py(988):     def help_ignore(self):
+pdb.py(996):     def help_condition(self):
+pdb.py(1003):     def help_step(self):
+pdb.py(1006):     def help_s(self):
+pdb.py(1011):     def help_until(self):
+pdb.py(1014):     def help_unt(self):
+pdb.py(1019):     def help_next(self):
+pdb.py(1022):     def help_n(self):
+pdb.py(1027):     def help_return(self):
+pdb.py(1030):     def help_r(self):
+pdb.py(1034):     def help_continue(self):
+pdb.py(1037):     def help_cont(self):
+pdb.py(1040):     def help_c(self):
+pdb.py(1044):     def help_jump(self):
+pdb.py(1047):     def help_j(self):
+pdb.py(1051):     def help_debug(self):
+pdb.py(1057):     def help_list(self):
+pdb.py(1060):     def help_l(self):
+pdb.py(1069):     def help_args(self):
+pdb.py(1072):     def help_a(self):
+pdb.py(1076):     def help_p(self):
+pdb.py(1080):     def help_pp(self):
+pdb.py(1084):     def help_exec(self):
+pdb.py(1095):     def help_run(self):
+pdb.py(1102):     help_restart = help_run
+pdb.py(1104):     def help_quit(self):
+pdb.py(1107):     def help_q(self):
+pdb.py(1111):     help_exit = help_q
+pdb.py(1113):     def help_whatis(self):
+pdb.py(1117):     def help_EOF(self):
+pdb.py(1121):     def help_alias(self):
+pdb.py(1145):     def help_unalias(self):
+pdb.py(1149):     def help_commands(self):
+pdb.py(1184):     def help_pdb(self):
+pdb.py(1187):     def lookupmodule(self, filename):
+pdb.py(1211):     def _runscript(self, filename):
+pdb.py(1237): def run(statement, globals=None, locals=None):
+pdb.py(1240): def runeval(expression, globals=None, locals=None):
+pdb.py(1243): def runctx(statement, globals, locals):
+pdb.py(1247): def runcall(*args, **kwds):
+pdb.py(1250): def set_trace():
+pdb.py(1255): def post_mortem(t=None):
+pdb.py(1269): def pm():
+pdb.py(1275): TESTCMD = 'import x; x.main()'
+pdb.py(1277): def test():
+pdb.py(1281): def help():
+pdb.py(1292): def main():
+pdb.py(1336): if __name__ == '__main__':
+pdb_test.py(4): def add(a, b):
+pdb_test.py(7): def samplefunc():
+pdb_test.py(15): samplefunc()
+ --- modulename: pdb_test, funcname: samplefunc
+pdb_test.py(8):     var = 10
+pdb_test.py(9):     print("One. Line 1 ..")
+One. Line 1 ..
+pdb_test.py(10):     print("Two. Line 2 ..!")
+Two. Line 2 ..!
+pdb_test.py(11):     out = add("summy", var)
+ --- modulename: pdb_test, funcname: add
+pdb_test.py(5):     return a + b
+ --- modulename: trace, funcname: _unsettrace
+trace.py(80):         sys.settrace(None)

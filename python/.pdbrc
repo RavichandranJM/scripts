@@ -1,0 +1,4 @@
+# Breakpoints
+break 10
+# Overridden alias
+alias redefined p 'local definition'
